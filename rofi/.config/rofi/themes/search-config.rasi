@@ -1,0 +1,15 @@
+configuration
+{
+	modi: "Home:~/.config/rofi/scripts/search-home.sh, Storage:~/.config/rofi/scripts/search-storage.sh, Root:~/.config/rofi/scripts/search-root.sh";
+	font: "Comic Sans MS Bold 14";
+	show-icons: true;
+	icon-theme: "candy-icons";
+	matching: "normal";
+	sort: true;
+	sorting-method: "fzf";
+	case-sensitive: false;
+	hover-select: false;
+	me-select-entry: "";
+	me-accept-entry: [ MousePrimary ];
+}
+@theme "~/.config/rofi/themes/search.rasi"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cursor (Rofi)
+Comment=Visual Studio Code with Rofi workspace selection
+Exec=/home/gajeet/.config/rofi/scripts/rofi-vscode-workspace.sh cursor
+Icon=code
+Type=Application
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=Code

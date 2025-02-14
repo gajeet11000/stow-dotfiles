@@ -1,0 +1,163 @@
+configuration
+{
+	font: "Ubuntu SemiBold 13";
+	disable-history: true;
+	kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+	kb-row-down: "Down,Control+j";
+	kb-accept-entry: "Control+m,Return,KP_Enter";
+	terminal: "mate-terminal";
+	kb-remove-to-eol: "Control+Shift+e";
+	/*kb-mode-next: "Shift+Right,Control+Tab,Control+l";*/
+	kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
+	kb-remove-char-back: "BackSpace";
+}
+
+@theme "/dev/null"
+
+* {
+    blue     : #89b4fa;
+    lavender : #b4befe;
+    sapphire : #74c7ec;
+    sky      : #89dceb;
+    teal     : #94e2d5;
+    green    : #a6e3a1;
+    yellow   : #f9e2af;
+    peach    : #fab387;
+    maroon   : #eba0ac;
+    red      : #f38ba8;
+    mauve    : #cba6f7;
+    pink     : #f5c2e7;
+    flamingo : #f2cdcd;
+    rosewater: #f5e0dc;
+    base   :#1e1e2e;
+    mantle :#181825;
+    crust  :#11111b;
+    text    : #cdd6f4;
+    subtext0: #a6adc8;
+    subtext1: #bac2de;
+    
+    surface0: #313244;
+    surface1: #45475a;
+    surface2: #585b70;
+    
+    overlay0: #6c7086;
+    overlay1: #7f849c;
+    overlay2: #9399b2;
+
+    bg-color: @base;
+    bg-secondary-color: @surface0;
+    text-color: @text;
+    highlight-color: @red;
+    highlight-text-color: @red;
+    border-color: @mauve;
+}
+
+element-text {
+    background-color: @surface0;
+    text-color:       @text-color;
+}
+element-text selected.normal {
+    background-color: @highlight-color;
+    text-color:       @bg-color;
+}
+
+window {
+    width: 75%;
+    height: 500px;
+    border: 3px;
+    anchor: north;
+    location: north;
+    border-color: @border-color;
+    background-color: @bg-color;
+    border-radius: 10px;
+}
+
+mainbox {
+    background-color: @bg-color;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-color;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-color;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 20px 0px 20px;
+    text-color: @green;
+    background-color: @bg-secondary-color;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 20px 20px 0px 20px;
+    columns: 1;
+    lines: 10;
+    background-color: @bg-color;
+}
+
+#element {
+    padding: 10px;
+    margin: 8px;
+    background-color: @surface0;
+    text-color: @text-color;
+    border-radius: 10px;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected.normal {
+    background-color:  @highlight-color ;
+    text-color: @bg-color  ;
+    border-radius: 10px;
+}
+
+mode-switcher {
+    spacing: 0;
+  }
+
+button {
+    padding: 10px;
+    background-color: @bg-color;
+    text-color: @yellow;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected.normal {
+  background-color: @bg-color;
+  text-color: @blue;
+}
+
+message {
+    background-color: @highlight-color;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+textbox {
+    padding: 6px;
+    margin: 20px 0px 0px 20px;
+    text-color: @blue;
+    border-radius: 10px;
+    background-color: @bg-color;
+}
