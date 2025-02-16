@@ -50,7 +50,6 @@ papirus-folders-catppuccin-git
 slack-desktop
 stacer-bin
 sublime-text-4
-zoho-mail-desktop
 dropbox
 dropbox-cli
 gammastep-wayland-git
@@ -87,7 +86,6 @@ fisher
 flameshot
 gnome-disk-utility
 gwenview
-haruna
 chezmoi
 hyprpicker
 kdeconnect
@@ -116,4 +114,8 @@ jdk17-openjdk
 qt6-svg
 qt6-declarative
 qt5-quickcontrols2
+cursor-bin
+yazi
+qt5-graphicaleffects
+ghostty
 
