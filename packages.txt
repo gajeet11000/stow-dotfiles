@@ -43,7 +43,6 @@ bibata-rainbow-cursor-theme
 catppuccin-gtk-theme-mocha
 visual-studio-code-bin
 pamac-aur
-insomnia-bin
 kvantum-theme-catppuccin-git
 masterpdfeditor-free
 papirus-folders-catppuccin-git
@@ -57,7 +56,7 @@ superfile-bin
 rofi-greenclip
 picom-simpleanims-git
 postman-bin
-anydesk-bin
+rustdesk-bin
 video-downloader
 riseup-vpn
 network-manager-applet
@@ -118,4 +117,4 @@ cursor-bin
 yazi
 qt5-graphicaleffects
 ghostty
-
+stow
