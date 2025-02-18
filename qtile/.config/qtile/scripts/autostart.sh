@@ -1,12 +1,10 @@
 #!/bin/bash
 
 function run {
-  if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null;
-  then
-    $@&
+  if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
+    $@ &
   fi
 }
-
 
 #Find out your monitor name with xrandr or arandr (save and you get this line)
 #xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
@@ -21,10 +19,9 @@ function run {
 #wallpaper for other Arch based systems
 
 if [ $# -ne 2 ]; then
-    echo "Usage: $0 <argument1> <argument2>"
-    exit 1
+  echo "Usage: $0 <argument1> <argument2>"
+  exit 1
 fi
-
 
 wallpapers_path="${1}"
 lockscreen_wallpapers_path="${2}"
@@ -34,8 +31,8 @@ betterlockscreen -u "$lockscreen_wallpapers_path" &
 # Run feh command with modified path
 feh --bg-fill -z "$wallpapers_path" &
 
-if [[ ! `pidof xfce-polkit` ]]; then
-	/usr/lib/xfce-polkit/xfce-polkit &
+if [[ ! $(pidof xfce-polkit) ]]; then
+  /usr/lib/xfce-polkit/xfce-polkit &
 fi
 
 exec dunst &
