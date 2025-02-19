@@ -68,16 +68,37 @@ function install_packages
         $packages
 end
 
+function create_backup
+    #BACKUP CONFIG FILES
+    set config_packages $(ls -d */ | grep -Ev "sddm|dot_local|dot_scripts|dot_fonts")
+    set config_packages $(string replace --all "/" "" $config_packages)
+    set config_packages $(string split " " $config_packages)
+
+    set CONFIG_DIR "$HOME/.config"
+    set BACKUP_DIR "$CONFIG_DIR/backup_configs"
+
+    mkdir -p "$BACKUP_DIR"
+    for package in $config_packages
+        mv "$CONFIG_DIR/$package" "$BACKUP_DIR"
+    end
+
+    # BACKING UP HOME CONFIGS
+    set home_configs $(string split " " ".local/share/applications .scripts .fonts")
+    for package in $home_configs
+        mv "$HOME/$package" "$BACKUP_DIR/home_configs"
+    end
+end
+
 function install_configs
     set all_packages $(ls -d */ | grep -v "sddm/")
 
     echo "Installing application configs..."
+
     stow -t $HOME $all_packages
 
-
     echo "Installing sddm theme and config..."
-    stow -t /usr/share/sddm/themes/ -d sddm/ simple-sddm-2
-    stow -t /etc/ -d sddm/ sddm.conf
+    sudo stow -t /usr/share/sddm/themes/ -d sddm/ themes/
+    sudo stow -t /etc/ -d sddm/ conf/
 
     echo "Finished installing configs!"
 end

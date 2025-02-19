@@ -2,8 +2,8 @@
 
 # Check if correct arguments are provided
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <website_without_protocol> <workspace_name>"
-    exit 1
+  echo "Usage: $0 <website_without_protocol> <workspace_name>"
+  exit 1
 fi
 
 # Assign arguments to variables for readability
@@ -15,9 +15,8 @@ window=$(hyprctl clients | grep -i "$window_title")
 
 # If the window is not open, launch the application (specific URLs or commands can be added as needed)
 if [ -z "$window" ]; then
-    $BROWSER --app="https://$window_title" &
+  $SCRATCHPAD_BROWSER --app="https://$window_title" &
 fi
 
 # Toggle the special workspace for the specified application
 hyprctl dispatch togglespecialworkspace "$workspace_name"
-

@@ -118,3 +118,11 @@ yazi
 qt5-graphicaleffects
 ghostty
 stow
+uwsm
+lazydocker
+losslesscut-bin
+hoppscotch-bin
+noisetorch-bin
+gvfs-mtp
+hyprland
+qtile

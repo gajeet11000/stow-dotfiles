@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Cursor (Rofi)
-Comment=Visual Studio Code with Rofi workspace selection
+Comment=Cursor with Rofi workspace selection
 Exec=.config/rofi/scripts/rofi-vscode-workspace.sh cursor
 Icon=code
 Type=Application
