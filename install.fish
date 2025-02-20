@@ -1,71 +1,118 @@
 #!/usr/bin/env fish
+#
+# CONSTANTS #
 
-function get_packages_to_install
-    set packages_file "packages.txt"
+set PACKAGES_FILE "packages.txt"
 
+set OPTIONAL_PACKAGES \
+    rustdesk-bin \
+    gimp \
+    kdeconnect \
+    telegram-desktop \
+    jdk17-openjdk \
+    video-downloader \
+    stacer-bin \
+    masterpdfeditor-free \
+    obs-studio \
+    riseup-vpn \
+    pamac-aur \
+    dropbox \
+    dropbox-cli \
+    obsidian
+
+function read_packages_from_file
     set all_packages
 
     while read -la package
         set all_packages $all_packages $package
-    end <$packages_file
+    end <$PACKAGES_FILE
 
-    set optional_packages \
-        rustdesk-bin \
-        gimp \
-        kdeconnect \
-        telegram-desktop \
-        jdk17-openjdk \
-        video-downloader \
-        stacer-bin \
-        masterpdfeditor-free \
-        obs-studio \
-        riseup-vpn \
-        pamac-aur \
-        dropbox \
-        dropbox-cli \
-        obsidian
+    echo $all_packages
+end
 
+function ask_about_optional_packages
     read -p \
         "set_color yellow; \
-      echo -n '🔴 Do you want to install optional packages? [y/N] '; \
+      echo -n '🔴 Do you want to install optional packages right now? [y/N] '; \
       set_color normal; echo -n '> '" install_optional
 
     # Check for empty resonse (user just hit enter) and default to NO
     if test -z "$install_optional"
-        set install_optional NO
+        set install_optional no
+        echo $install_optional
+        return 0
     end
 
     set install_optional (string lower $install_optional)
 
     if test "$install_optional" = y || test "$install_optional" = yes
-        set install_optional true
+        set install_optional yes
     else
-        set install_optional false
+        set install_optional no
     end
 
-    set length (count $all_packages)
+    echo $install_optional
+end
 
-    # Remove the optional packages as per the user input
-    if test "$install_optional"= false
-        for index in (seq 1 $length)
-            if test (contains -i -- "$all_packages[$index]" $optional_packages)
-                set -e all_packages[$index]
-            end
+function get_essential_packages
+    set all_packages $(read_packages_from_file)
+
+    set length (count $all_packages)
+    for index in (seq 1 $length)
+        if test (contains -i -- "$all_packages[$index]" $OPTIONAL_PACKAGES)
+            set -e all_packages[$index]
         end
     end
 
-    # Return the packages to be installed
     echo $all_packages
 end
 
-function install_packages
-    set packages $(get_packages_to_install)
+function get_packages_to_install
+    set install_optional $(ask_about_optional_packages)
+
+    set all_packages
+
+    if test "$install_optional" = yes
+        set all_packages $(read_packages_from_file)
+    else
+        set all_packages $(get_essential_packages)
+    end
+
+    echo $all_packages
+end
+
+function install_packages -a packages
     yay -Syyu \
         --answerclean NotInstalled \
         --answerdiff None \
         --batchinstall \
         --needed \
         $packages
+end
+
+function install_configs
+    set all_packages $(ls -d */ | grep -v "sddm/")
+
+    echo "Installing application configs..."
+
+    stow -t $HOME $all_packages
+
+    echo "Installing sddm theme and config..."
+    sudo cp -r sddm/themes/* /usr/share/sddm/themes/
+    sudo stow -t /etc/ -d sddm/ conf/
+
+    echo "Finished installing configs!"
+end
+
+function post_installation_configs
+    #TODO complete this function
+    echo hello
+end
+
+function complete_installation_funnel
+    set packages_to_install $(get_packages_to_install)
+    install_packages packages_to_install
+    install_configs
 end
 
 function create_backup
@@ -83,22 +130,8 @@ function create_backup
     end
 
     # BACKING UP HOME CONFIGS
-    set home_configs $(string split " " ".local/share/applications .scripts .fonts")
+    set home_configs $(string split ' ' ".local/share/applications .scripts .fonts")
     for package in $home_configs
         mv "$HOME/$package" "$BACKUP_DIR/home_configs"
     end
-end
-
-function install_configs
-    set all_packages $(ls -d */ | grep -v "sddm/")
-
-    echo "Installing application configs..."
-
-    stow -t $HOME $all_packages
-
-    echo "Installing sddm theme and config..."
-    sudo stow -t /usr/share/sddm/themes/ -d sddm/ themes/
-    sudo stow -t /etc/ -d sddm/ conf/
-
-    echo "Finished installing configs!"
 end
