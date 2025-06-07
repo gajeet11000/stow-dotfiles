@@ -8,6 +8,7 @@ alias c="clear"
 alias ll="lsd -1 -hal --blocks permission,user,size,name --group-dirs=first"
 alias btop="btop --utf-force"
 alias lg="lazygit"
+alias ld="lazydocker"
 
 # Package Manager
 alias search="yay -Ss "
@@ -21,10 +22,4 @@ bind -M insert \ef accept-autosuggestion
 
 starship init fish | source
 
-set -gx PATH $HOME/.pyenv/bin $PATH
-status --is-interactive; and . (pyenv init --path | psub)
-status --is-interactive; and . (pyenv init - | psub)
-status --is-interactive; and . (pyenv virtualenv-init - | psub)
-
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /home/gajeet/.lmstudio/bin
+set -gx NVM_DIR "$HOME/.nvm"
