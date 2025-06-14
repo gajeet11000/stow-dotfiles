@@ -1,4 +1,4 @@
-import setup
+from . import setup
 
 
 def post_install():
