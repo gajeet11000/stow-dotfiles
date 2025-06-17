@@ -23,7 +23,7 @@ def set_fish_colorscheme():
     """
     try:
         subprocess.run(
-            ["fish_config", "theme", "save", "Catppuccin Mocha"],
+            ["fish", "fish_config", "theme", "save", "Catppuccin Mocha"],
             check=True,
         )
         print("Fish colorscheme set to 'Catppuccin Mocha'.")
