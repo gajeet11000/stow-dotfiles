@@ -3,7 +3,7 @@ if status is-interactive
 end
 set -U fish_greeting
 
-# Utilities 
+# Utilities
 alias c="clear"
 alias ll="lsd -1 -hal --blocks permission,user,size,name --group-dirs=first"
 alias btop="btop --utf-force"
@@ -13,8 +13,8 @@ alias ld="lazydocker"
 # Package Manager
 alias search="yay -Ss "
 alias install="yay -S --needed "
-alias update="yay -Syu "
-alias remove="yay -R "
+alias update="yay -Syu --noconfirm --needed --answerdiff None --answerclean NotInstalled",
+alias remove="yay -Rd "
 
 fish_vi_key_bindings
 bind -M insert -m default ii backward-char force-repaint
