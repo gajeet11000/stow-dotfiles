@@ -27,9 +27,9 @@ wl_input_rules = None
 
 bring_front_click = "floating_only"
 floats_kept_above = True
-cursor_warp = True
+cursor_warp = False
 auto_fullscreen = True
 
-focus_on_window_activation = "focus"  # or smart or focus
+focus_on_window_activation = "smart"  # or smart or focus
 
 wmname = "LG3D"

@@ -19,17 +19,4 @@ def init_mouse():
             start=lazy.window.get_size(),
         ),
         Click([uv.SUPER], uv.MIDDLE_CLICK, lazy.window.bring_to_front()),
-        # Drag(
-        #     [uv.CTRL],
-        #     uv.LEFT_CLICK,
-        #     lazy.window.set_position_floating(),
-        #     start=lazy.window.get_position(),
-        # ),
-        # Drag(
-        #     [uv.CTRL],
-        #     uv.RIGHT_CLICK,
-        #     lazy.window.set_size_floating(),
-        #     start=lazy.window.get_size(),
-        # ),
-        # Click(uv.CTRL, uv.MIDDLE_CLICK, lazy.window.bring_to_front()),
     ]

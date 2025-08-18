@@ -13,11 +13,18 @@ def init_screens():
                 border_color="#282738",
             ),
         ),
+        Screen(
+            top=bar.Bar(
+                widgets=get_bar_widgets(main_screen=False),
+                size=30,
+                border_color="#282738",
+            ),
+        ),
     ]
 
 
-def get_bar_widgets():
-    return [
+def get_bar_widgets(main_screen=True):
+    widgets = [
         widget.GroupBox(
             font="FontAwesome Regular",
             fontsize=24,
@@ -140,19 +147,19 @@ def get_bar_widgets():
             emoji=True,
             fontsize=16,
             background="#353446",
-            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.cmd_spawn(uv.PAVUCONTROL)},
+            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.spawn(uv.PAVUCONTROL)},
         ),
         widget.Spacer(
             length=-5,
             background="#353446",
-            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.cmd_spawn(uv.PAVUCONTROL)},
+            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.spawn(uv.PAVUCONTROL)},
         ),
         widget.Volume(
             font="JetBrains Bold",
             background="#353446",
             foreground="#E0B0FF",
             fontsize=16,
-            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.cmd_spawn(uv.PAVUCONTROL)},
+            mouse_callbacks={uv.RIGHT_CLICK: lambda: qtile.spawn(uv.PAVUCONTROL)},
         ),
         widget.Image(
             filename="~/.config/qtile/Assets/5.png",
@@ -172,3 +179,9 @@ def get_bar_widgets():
             fontsize=16,
         ),
     ]
+    
+    if not main_screen:
+        widgets.pop(10)
+        widgets.pop(11)
+    
+    return widgets

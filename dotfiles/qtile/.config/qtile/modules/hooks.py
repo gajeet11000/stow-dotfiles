@@ -1,9 +1,21 @@
+import os
 import subprocess
 
 from libqtile import hook, qtile
 
 from . import user_variables as uv
 from .functions import Custom
+
+
+@hook.subscribe.startup_once
+def set_env_vars():
+    os.environ["BROWSER"] = uv.WEB_BROWSER
+    os.environ["TERM"] = uv.TERMINAL
+    os.environ["EDITOR"] = uv.EDITOR
+    os.environ["XCURSOR_SIZE"] = uv.CURSOR_SIZE
+    os.environ["XCURSOR_THEME"] = uv.CURSOR_THEME
+    os.environ["GTK_THEME"] = uv.GTK_THEME
+    os.environ["QT_QPA_PLATFORMTHEME"] = uv.QT_THEME
 
 
 @hook.subscribe.startup_once

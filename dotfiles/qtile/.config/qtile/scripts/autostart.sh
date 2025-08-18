@@ -21,6 +21,9 @@ lockscreen_wallpapers_path="$2"
 feh --bg-fill -z "$wallpapers_path" &
 betterlockscreen -u "$lockscreen_wallpapers_path" &
 
+# Fix mouse cursor
+xsetroot -cursor_name left_ptr &
+
 # Start polkit agent (needed for mounting drives, network manager, etc.)
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
