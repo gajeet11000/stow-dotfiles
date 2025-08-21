@@ -1,0 +1,34 @@
+#!/bin/sh
+# ================================
+# Qtile / X11 theming environment
+# ================================
+
+# Cursor theme
+export XCURSOR_THEME="Bibata-Rainbow-Modern"
+export XCURSOR_SIZE=24
+
+# GTK theme
+export GTK_THEME="catppuccin-mocha-mauve-standard+default"
+
+# Fonts (optional, tweak to your liking)
+# export GTK_FONT_NAME="JetBrainsMono Nerd Font 11"
+
+# Ensure cursor fallback works (for apps ignoring env vars)
+mkdir -p ~/.icons/default
+cat > ~/.icons/default/index.theme <<EOF
+[Icon Theme]
+Inherits=Bibata-Rainbow-Modern
+EOF
+
+# -------------------------
+# Qt-specific integrations
+# -------------------------
+
+# Make Qt apps follow GTK theme (instead of defaulting to Fusion/Adwaita)
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
+# Match Qt font with GTK font
+# export QT_FONT_NAME="JetBrainsMono Nerd Font,11"
+
+# Some Qt apps also respect this
+# export QT_STYLE_OVERRIDE="gtk2"
