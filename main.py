@@ -3,6 +3,7 @@ import argparse
 from libs.package import PackageInstaller
 from libs.post_install import post_install
 from libs.setup.nwg_look import export_nwg_looks_settings
+from libs.setup.reflector_sudoer import create_reflector_sudoers_rule
 from libs.stow import StowConfig
 
 
@@ -17,6 +18,9 @@ def main():
     )
     subparsers.add_parser("unstow-configs", help="Unstow all dotfiles configs")
     subparsers.add_parser("apply-gtk", help="Export NWG Looks GTK settings")
+    subparsers.add_parser(
+        "create-reflector-sudoers", help="Create sudoers rule for reflector"
+    )
 
     args = parser.parse_args()
 
@@ -30,6 +34,8 @@ def main():
         StowConfig().unstow_all_configs()
     elif args.command == "apply-gtk":
         export_nwg_looks_settings()
+    elif args.command == "create-reflector-sudoers":
+        create_reflector_sudoers_rule()
     else:
         parser.print_help()
 
