@@ -6,7 +6,6 @@ set -U fish_greeting
 # Utilities
 alias c="clear"
 alias ll="lsd -1 -hal --blocks permission,user,size,name --group-dirs=first"
-alias btop="btop --utf-force"
 alias lg="lazygit"
 alias ld="lazydocker"
 
