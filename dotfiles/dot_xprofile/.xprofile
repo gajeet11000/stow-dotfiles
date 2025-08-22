@@ -26,9 +26,10 @@ EOF
 
 # Make Qt apps follow GTK theme (instead of defaulting to Fusion/Adwaita)
 export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_QPA_PLATFORM="wayland"
 
 # Match Qt font with GTK font
 # export QT_FONT_NAME="JetBrainsMono Nerd Font,11"
 
 # Some Qt apps also respect this
-# export QT_STYLE_OVERRIDE="gtk2"
+# export QT_STYLE_OVERRIDE="kvantum"

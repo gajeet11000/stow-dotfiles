@@ -1,0 +1,54 @@
+/* Catppuccin Mocha Color Palette for swaync */
+
+/* Base Catppuccin Mocha Colors */
+@define-color rosewater #f5e0dc;
+@define-color flamingo  #f2cdcd;
+@define-color pink      #f5c2e7;
+@define-color mauve     #cba6f7;
+@define-color red       #f38ba8;
+@define-color maroon    #eba0ac;
+@define-color peach     #fab387;
+@define-color yellow    #f9e2af;
+@define-color green     #a6e3a1;
+@define-color teal      #94e2d5;
+@define-color sky       #89dceb;
+@define-color sapphire  #74c7ec;
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+
+/* Surface colors */
+@define-color text      #cdd6f4;
+@define-color subtext1  #bac2de;
+@define-color subtext0  #a6adc8;
+@define-color overlay2  #9399b2;
+@define-color overlay1  #7f849c;
+@define-color overlay0  #6c7086;
+@define-color surface2  #585b70;
+@define-color surface1  #45475a;
+@define-color surface0  #313244;
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color crust     #11111b;
+
+/* Variables used in your swaync theme */
+@define-color foreground    @text;        /* Main text color */
+@define-color background    @base;        /* Main background */
+@define-color background-sec @surface0;   /* Secondary background */
+
+/* Color variables for your theme */
+@define-color color0    @surface0;        /* Dark surface */
+@define-color color1    @surface1;        /* Button backgrounds */
+@define-color color2    @red;             /* Urgent/critical notifications */
+@define-color color3    @mauve;           /* Selected items */
+@define-color color4    @overlay0;        /* Muted elements */
+@define-color color5    @surface2;        /* Hover states */
+@define-color color6    @blue;            /* Accent elements */
+@define-color color7    @subtext0;        /* Secondary text */
+@define-color color8    @overlay1;        /* Borders */
+@define-color color9    @red;             /* Error/urgent */
+@define-color color10   @green;           /* Success */
+@define-color color11   @yellow;          /* Warning */
+@define-color color12   @blue;            /* Info */
+@define-color color13   @pink;            /* Highlight */
+@define-color color14   @teal;            /* Secondary accent */
+@define-color color15   @text;            /* Primary text */
