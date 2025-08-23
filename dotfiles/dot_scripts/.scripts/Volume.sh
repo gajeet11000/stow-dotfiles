@@ -4,6 +4,7 @@
 
 iDIR="$HOME/.config/swaync/icons"
 sDIR="$HOME/.config/hypr/scripts"
+timeout=1000
 
 # Get Volume
 get_volume() {
@@ -32,9 +33,9 @@ get_icon() {
 # Notify
 notify_user() {
     if [[ "$(get_volume)" == "Muted" ]]; then
-        notify-send -t 700 -e -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: Muted"
+        notify-send -t $timeout -e -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "  Volume: Muted"
     else
-        notify-send -t 700 -e -h int:value:"$(get_volume | sed 's/%//')" -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: $(get_volume)"
+        notify-send -t $timeout -e -h int:value:"$(get_volume | sed 's/%//')" -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "  Volume: $(get_volume)"
         "$sDIR/Sounds.sh" --volume
     fi
 }
@@ -60,21 +61,28 @@ dec_volume() {
 
 # Toggle Mute
 toggle_mute() {
-	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m && notify-send -t 700 -e -u low -i "$iDIR/volume-mute.png" "Volume Switched OFF"
-	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u && notify-send -t 700 -e -u low -i "$(get_icon)" "Volume Switched ON"
-	fi
+    if [ "$(pamixer --get-mute)" == "false" ]; then
+        pamixer -m \
+            && notify-send -t $timeout -e -u low -i "$iDIR/volume-mute.png" "  Muted"
+    else
+        pamixer -u \
+            && notify_user   # show progress bar with current volume
+    fi
 }
+
 
 # Toggle Mic
 toggle_mic() {
-	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-		pamixer --default-source -m && notify-send -t 700 -e -u low -i "$iDIR/microphone-mute.png" "Microphone Switched OFF"
-	elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-		pamixer -u --default-source u && notify-send -t 700 -e -u low -i "$iDIR/microphone.png" "Microphone Switched ON"
-	fi
+    if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
+        pamixer --default-source -m \
+            && notify-send -t $timeout -e -u low -i "$iDIR/microphone-mute.png" "  Muted"
+    else
+        pamixer --default-source -u \
+            && notify_mic_user   # show progress bar with previous mic volume
+    fi
 }
+
+
 # Get Mic Icon
 get_mic_icon() {
     current=$(pamixer --default-source --get-volume)
@@ -99,7 +107,7 @@ get_mic_volume() {
 notify_mic_user() {
     volume=$(get_mic_volume)
     icon=$(get_mic_icon)
-    notify-send -t 700 -e -h int:value:"$volume" -h "string:x-canonical-private-synchronous:volume_notif" -u low -i "$icon" "Mic-Level: $volume"
+    notify-send -t $timeout -e -h int:value:"$volume" -h "string:x-canonical-private-synchronous:volume_notif" -u low -i "$icon" "  Mic-Level: $volume"
 }
 
 # Increase MIC Volume
@@ -114,7 +122,7 @@ inc_mic_volume() {
 # Decrease MIC Volume
 dec_mic_volume() {
     if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-        toggle-mic
+        toggle_mic
     else
         pamixer --default-source -d 5 && notify_mic_user
     fi

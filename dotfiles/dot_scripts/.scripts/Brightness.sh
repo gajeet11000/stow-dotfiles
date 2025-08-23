@@ -3,7 +3,7 @@
 # Script for Monitor backlights (if supported) using brightnessctl
 
 iDIR="$HOME/.config/swaync/icons"
-notification_timeout=1000
+timeout=1000
 step=10  # INCREASE/DECREASE BY THIS VALUE
 
 # Get brightness
@@ -29,7 +29,7 @@ get_icon() {
 
 # Notify
 notify_user() {
-	notify-send -t 700 -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:$current -u low -i "$icon" "Brightness : $current%"
+	notify-send -t $timeout -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:$current -u low -i "$icon" "  Brightness : $current%"
 }
 
 # Change brightness
