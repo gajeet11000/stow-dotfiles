@@ -1,36 +1,36 @@
 {
-    "label" : "lock",
-    "action" : "$HOME/.scripts/lockscreen",
-    "text" : "Lock",
-    "keybind" : "l"
+    "label": "lock",
+    "action": "$HOME/.scripts/power.sh lock",
+    "text": "Lock",
+    "keybind": "l"
 }
 {
-    "label" : "hibernate",
-    "action" : "$HOME/.scripts/power.sh hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
+    "label": "hibernate",
+    "action": "$HOME/.scripts/power.sh hibernate",
+    "text": "Hibernate",
+    "keybind": "h"
 }
 {
-    "label" : "logout",
-    "action" : "$HOME/.scripts/power.sh exit",
-    "text" : "Exit",
-    "keybind" : "e"
+    "label": "logout",
+    "action": "$HOME/.scripts/power.sh exit",
+    "text": "Exit",
+    "keybind": "e"
 }
 {
-    "label" : "shutdown",
-    "action" : "$HOME/.scripts/power.sh shutdown",
-    "text" : "Shutdown",
-    "keybind" : "s"
+    "label": "shutdown",
+    "action": "$HOME/.scripts/power.sh shutdown",
+    "text": "Shutdown",
+    "keybind": "s"
 }
 {
-    "label" : "suspend",
-    "action" : "$HOME/.scripts/power.sh suspend",
-    "text" : "Suspend",
-    "keybind" : "u"
+    "label": "suspend",
+    "action": "$HOME/.scripts/power.sh suspend",
+    "text": "Suspend",
+    "keybind": "u"
 }
 {
-    "label" : "reboot",
-    "action" : "$HOME/.scripts/power.sh reboot",
-    "text" : "Reboot",
-    "keybind" : "r"
+    "label": "reboot",
+    "action": "$HOME/.scripts/power.sh reboot",
+    "text": "Reboot",
+    "keybind": "r"
 }
