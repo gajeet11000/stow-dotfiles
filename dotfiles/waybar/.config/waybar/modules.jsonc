@@ -103,10 +103,11 @@
   },
 
   "disk": {
-    "interval": 30,
+    "interval": 10,
     "path": "/",
     "format": "󰋊 {percentage_used}%",
-    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+    "on-click": "baobab $HOME"
   },
 
   "idle_inhibitor": {
