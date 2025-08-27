@@ -40,6 +40,16 @@
     ]
   },
 
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "battery",
+      "custom/separator#blank",
+      "power-profiles-daemon",
+      "custom/separator#blank"
+    ]
+  },
+
   "battery": {
     "align": 0,
     "rotate": 0,
@@ -93,6 +103,18 @@
     }
   },
 
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": " ",
+      "power-saver": " "
+    }
+  },
+
   "cpu": {
     "format": "{usage}% 󰍛",
     "interval": 1,
@@ -107,7 +129,9 @@
     "path": "/",
     "format": "󰋊 {percentage_used}%",
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
-    "on-click": "baobab $HOME"
+    "on-click": "baobab $HOME",
+    "on-scroll-up": ":",
+    "on-scroll-down": ":"
   },
 
   "idle_inhibitor": {
@@ -138,7 +162,9 @@
     "format-alt-click": "click",
     "tooltip": true,
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
-    "on-click-right": "kitty --title btop sh -c 'btop'"
+    "on-click-right": "kitty --title btop sh -c 'btop'",
+    "on-scroll-up": ":",
+    "on-scroll-down": ":"
   },
 
   "network#speed": {

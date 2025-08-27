@@ -65,7 +65,7 @@
     "tray",
     "custom/separator#blank",
     "group/sound",
-    "battery",
+    "group/power",
     "group/motherboard",
     "clock",
     "idle_inhibitor"
