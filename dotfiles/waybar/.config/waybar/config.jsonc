@@ -58,14 +58,14 @@
     "custom/separator#line",
     "hyprland/window"
   ],
-  "modules-center": [],
+  // "modules-center": [],
   "modules-right": [
     "network#speed",
     "custom/separator#blank",
     "tray",
     "custom/separator#blank",
+    "group/sound",
     "battery",
-    "group/audio",
     "group/motherboard",
     "clock",
     "idle_inhibitor"
