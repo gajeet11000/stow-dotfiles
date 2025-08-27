@@ -13,7 +13,7 @@
   border-radius: 12px;
   background: linear-gradient(135deg,  
     rgba(8, 15, 40, 0.70) 20%,  
-    rgba(12, 20, 45, 0.78) 50%,  
+    rgba(12, 20, 45, 0.72) 50%,  
     rgba(6, 12, 35, 0.60) 100%
   );
   transition: background 1s ease;
@@ -68,11 +68,6 @@
   color: @blue;
 }
 
-#battery {
-  color: @lavender;
-  border: 1px solid @lavender;
-  /* box-shadow: 0px 8px 0px text0px @lavender; */
-}
 
 @keyframes blink {
   to {
@@ -222,11 +217,17 @@
 
 #clock {
   color: @peach;
-  border: 1px solid @peach;
+  /* border: 1px solid @peach; */
 }
 #motherboard {
   color: @teal;
-  border: 1px solid @teal;
+  /* border: 1px solid @teal; */
+}
+
+#battery {
+  color: @lavender;
+  /* border: 1px solid @lavender; */
+  /* box-shadow: 0px 8px 0px text0px @lavender; */
 }
 
 #battery,
