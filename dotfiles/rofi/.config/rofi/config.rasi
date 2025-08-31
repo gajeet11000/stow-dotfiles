@@ -1,9 +1,9 @@
 configuration
 {
-	modi: "drun,run,window";
+	modi: "drun";
 	font: "Comic Sans MS Bold 14";
 	show-icons: true;
-	icon-theme: "candy-icons";
+	icon-theme: "Papirus-Dark";
 	drun-display-format: "{name}";
 	display-drun: "Run ▶ ";
 	matching: "normal";
@@ -12,16 +12,41 @@ configuration
 	sort: true;
 	sorting-method: "fzf";
 	case-sensitive: false;
-	me-select-entry: "";
-	me-accept-entry: [ MousePrimary ];
-	kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
-	kb-row-down: "Down,Control+j";
-	kb-accept-entry: "Control+m,Return,KP_Enter";
-	terminal: "mate-terminal";
-	kb-remove-to-eol: "Control+Shift+e";
-	/*kb-mode-next: "Shift+Right,Control+Tab,Control+l";*/
-	kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
-	kb-remove-char-back: "BackSpace";
 
+          kb-primary-paste : "Control+V";
+        kb-secondary-paste : "Control+v";
+         kb-secondary-copy : "Control+c";
+             kb-clear-line : "Control+w";
+             kb-move-front : "0";
+               kb-move-end : "Control+Alt+a";
+         kb-move-word-back : "Control+Alt+h";
+      kb-move-word-forward : "Control+Alt+l";
+         kb-move-char-back : "Left,Alt+h";
+      kb-move-char-forward : "Right,Alt+l";
+       kb-remove-word-back : "Control+BackSpace";
+    kb-remove-word-forward : "Control+Delete";
+    kb-remove-char-forward : "Delete,Control+d";
+       kb-remove-char-back : "BackSpace";
+          kb-remove-to-eol : "";
+          kb-remove-to-sol : "";
+           kb-accept-entry : "Control+m,Return,KP_Enter";
+          kb-mode-complete : "";
+               kb-row-left : "Control+h";
+              kb-row-right : "Control+l";
+                 kb-row-up : "Control+k";
+               kb-row-down : "Control+j";
+                kb-row-tab : "";
+           kb-element-next : "Tab";
+           kb-element-prev : "ISO_Left_Tab";
+             kb-screenshot : "Control+s";
+                 kb-cancel : "Escape,Control+g,Control+bracketleft";
+       kb-entry-history-up : "Control+u";
+     kb-entry-history-down : "Control+n";
+               ml-row-left : "ScrollLeft";
+              ml-row-right : "ScrollRight";
+                 ml-row-up : "ScrollUp";
+               ml-row-down : "ScrollDown";
+           me-select-entry : "";
+           me-accept-entry : "MousePrimary";
 }
-@theme "~/.config/rofi/themes/aj-dmenu.rasi"
+

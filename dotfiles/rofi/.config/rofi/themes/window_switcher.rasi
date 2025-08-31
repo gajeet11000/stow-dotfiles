@@ -1,0 +1,3 @@
+@import "~/.config/rofi/colors/mocha.rasi"
+@import "~/.config/rofi/variables/window_switcher.rasi"
+@import "~/.config/rofi/layout.rasi"
