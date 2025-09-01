@@ -1,7 +1,7 @@
 @import "~/.config/rofi/colors/mocha.rasi"
 
 configuration {
-    font:                       "Comic Sans MS Bold 13";
+    font:                       "Comic Sans MS Bold 12";
 }
 
 * {
