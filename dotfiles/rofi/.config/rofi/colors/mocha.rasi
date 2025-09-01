@@ -1,4 +1,5 @@
 * {
+  flamingo-mauve-gradient:  linear-gradient(45deg, #DFA2A7, #B88EDB);
   rosewater 	: rgba(245, 224, 220, 1.0);
   flamingo 	: rgba(242, 205, 205, 1.0);
   pink 	: rgba(245, 194, 231, 1.0);

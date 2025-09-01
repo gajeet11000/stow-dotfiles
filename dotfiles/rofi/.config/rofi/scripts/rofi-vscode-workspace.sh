@@ -6,7 +6,7 @@ workspace_dir="$HOME/Documents/VSCode Workspace/"
 workspaces=$(find "$workspace_dir" -type f -name "*.code-workspace" -exec basename {} \; | sed 's/\.code-workspace$//')
 
 # Use Rofi to display the workspace selection menu
-selected_workspace=$(echo "$workspaces" | rofi -sort -sorting-method fzf -dmenu -i -p "Select a workspace:")
+selected_workspace=$(echo "$workspaces" | rofi  -dmenu -i -theme "application_launcher" -p "Select a workspace: ")
 
 # If a workspace is selected, open VS Code with that workspace
 if [ -n "$selected_workspace" ]; then

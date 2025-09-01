@@ -6,7 +6,7 @@ configuration
 	icon-theme: "Papirus-Dark";
 	drun-display-format: "{name}";
 	display-drun: "Run ▶ ";
-	matching: "normal";
+	matching: "fuzzy";
 	drun-match-fields: "name, generic, exec, categories";
 	hover-select: true;
 	sort: true;

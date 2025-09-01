@@ -1,3 +1,274 @@
 @import "~/.config/rofi/colors/mocha.rasi"
-@import "~/.config/rofi/variables/window_switcher.rasi"
-@import "~/.config/rofi/layout.rasi"
+
+* {
+    /* Custom Variables */
+    background-unselected:                     var(base);
+    foreground-unselected:                     var(text);
+
+    background-selected:                       var(mauve);
+    foreground-selected:                       var(base);
+
+    // Use only as background-image
+    gradient-background-selected:              var(flamingo-mauve-gradient);
+
+    background-color:                          var(base);
+    selected-border-color:                     var(mauve);
+    grey:                                      var(overlay0);
+    urgent:                                    var(red);
+
+    window-height:                             600px;
+    window-width:                              900px;
+
+    icon-size: 2.5ch;
+    border-radius: 10px;
+
+    /* Rofi States (leave the states alone, these are expected by rofi change them using custom variables)*/
+    normal-background:              var(background-unselected);
+    normal-foreground:              var(foreground-unselected);
+
+    alternate-normal-background:    var(background-unselected);
+    alternate-normal-foreground:    var(foreground-unselected);
+
+    urgent-background:              var(background-unselected);
+    urgent-foreground:              var(urgent);
+
+    alternate-urgent-background:    var(background-unselected);
+    alternate-urgent-foreground:    var(urgent);
+
+    active-background:              var(grey);
+    active-foreground:              var(blue);
+
+    alternate-active-background:    var(background-unselected);
+    alternate-active-foreground:    var(foreground-unselected);
+
+    selected-normal-background:     var(background-selected);
+    selected-normal-foreground:     var(foreground-selected);
+
+    selected-active-background:     var(background-selected);
+    selected-active-foreground:     var(urgent);
+
+    selected-urgent-background:     var(background-selected);
+    selected-urgent-foreground:     var(urgent);
+
+}
+
+/* -- General Element Styling -- */
+/* This is the base style for all elements in a list (e.g., search results). */
+element {
+    padding: 5px;
+    spacing: 5px;
+    margin:  0px 0px 10px 0px;
+    border:  2px;
+    border-color: var(overlay0);
+    border-radius: var(border-radius);
+    cursor:  pointer;
+}
+
+/* -- Element States -- */
+/* Elements have different states: normal, selected, alternate. */
+/* And sub-states: normal, urgent, active. */
+/* This section defines the colors for each combination. */
+
+/* Style for a standard, unselected list item. */
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
+}
+/* Style for a selected list item in a normal state. */
+element selected.normal {
+    // background-color: var(selected-normal-background);
+    background-image: var(gradient-background-selected);
+    text-color:       var(selected-normal-foreground);
+}
+/* Style for an unselected item that is marked as "urgent". */
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
+}
+/* Style for an unselected item that is marked as "active". */
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
+}
+/* Style for a selected item that is also "urgent". */
+element selected.urgent {
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
+}
+/* Style for a selected item that is also "active". */
+element selected.active {
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
+}
+/* Style for an "alternate" (e.g., odd/even row) unselected item for zebra-striping. */
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
+}
+/* Style for an "alternate" urgent item. */
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
+}
+/* Style for an "alternate" active item. */
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
+}
+
+
+/* -- Element Components -- */
+/* These style the parts *inside* a list element. */
+
+/* Defines the style for the text portion of a list element. */
+element-text {
+    background-color: transparent;
+    /* Takes the cursor style from its parent 'element'. */
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+/* Defines the style for the icon portion of a list element. */
+element-icon {
+    background-color: transparent;
+    size:             var(icon-size);
+    cursor:           inherit;
+    text-color:       inherit;
+}
+
+
+/* -- Main Layout -- */
+
+/* The main application window. */
+window {
+    padding:          30px;
+    background-color: var(background-color);
+    border:           1px;
+    border-color:     var(pink);
+    border-radius:    var(border-radius);
+    height:           var(window-height);
+    width:            var(window-width);
+}
+
+/* The primary container inside the window that holds other elements. */
+mainbox {
+    padding: 0px;
+    border:  0px;
+    border-radius:    var(border-radius);
+}
+
+/* A box for displaying messages or errors. */
+message {
+    padding:      1px ;
+    border-color: var(grey);
+    /* Sets a 2px dashed border ONLY on the top. */
+    border:       2px dash 0px 0px ;
+    border-radius:    var(border-radius);
+}
+
+/* The main container for the list of elements. */
+listview {
+    padding:      20px;
+    margin:       20px 0px 0px 0px;
+
+    /* Enables or disables the scrollbar. */
+    scrollbar:    false;
+    border-color: var(grey);
+
+    /* If non-zero, sets a fixed height. 0 means dynamic height. */
+    fixed-height: 0;
+
+    border:       2px 2px 2px;
+    border-radius:    var(border-radius);
+}
+
+/* The sidebar, often used for mode-switchers or buttons. */
+sidebar {
+    border-color: var(grey);
+    border:       2px dash 0px 0px ;
+    border-radius:    var(border-radius);
+}
+
+
+/* -- UI Widgets -- */
+
+/* The base style for a button. */
+button {
+    cursor:     pointer;
+    spacing:    0;
+    text-color: var(normal-foreground);
+    border-radius:    var(border-radius);
+}
+/* The style for a button when it is selected. */
+button selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+/* Generic textbox styling. */
+textbox {
+    text-color: var(normal-foreground);
+}
+
+
+/* -- Input Bar -- */
+/* The bar at the top or bottom where the user types. */
+
+/* The container for the entire input bar. */
+inputbar {
+    padding:    1px;
+    spacing:    0px;
+    text-color: var(normal-foreground);
+    /* IMPORTANT: This defines the layout and order of widgets inside the input bar. */
+    children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows" ];
+}
+
+/* The prompt text that appears before the entry field (e.g., "Run:"). */
+prompt {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+
+/* The colon ":" that appears after the prompt. */
+textbox-prompt-colon {
+    text-color: var(normal-foreground);
+    margin:     0px 0.3em 0em 0em ;
+
+    /* If false, the element will not grow to fill space. */
+    expand:     false;
+    /* The character(s) to display. */
+    str:        "";
+}
+
+
+/* The actual text entry field where the user types. */
+ entry {
+    text-color:        var(normal-foreground);
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: var(grey);
+    placeholder:       "Type to filter";
+}
+
+
+/* -- Row Counters -- */
+/* Widgets that show "X/Y" results. */
+
+/* Displays the number of rows currently visible after filtering. */
+num-filtered-rows {
+    expand:     false;
+    text-color: var(grey);
+}
+/* Displays the total number of rows. */
+num-rows {
+    expand:     false;
+    text-color: var(grey);
+}
+/* The separator (e.g., "/") between the filtered and total row counts. */
+textbox-num-sep {
+    expand:     false;
+    str:        "/";
+    text-color: var(grey);
+}
+
+
+
