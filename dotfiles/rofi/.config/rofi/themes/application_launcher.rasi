@@ -1,13 +1,13 @@
 @import "~/.config/rofi/colors/mocha.rasi"
 
 configuration {
-    font:                       "Comic Sans MS Bold 12";
+    font:                       "Comic Sans MS Bold 11";
 }
 
 * {
     /* Custom Variables */
     background-unselected:                     var(base);
-    foreground-unselected:                     var(text);
+    foreground-unselected:                     var(pink);
 
     background-selected:                       var(mauve);
     foreground-selected:                       var(base);
