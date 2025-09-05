@@ -1,0 +1,13 @@
+@import "~/.config/rofi/configs/common.rasi"
+
+configuration
+{
+	show-icons: true;
+	matching: "normal";
+	icon-theme: "Papirus-Dark";
+	drun-display-format: "{name}";
+	display-drun: "Run ▶ ";
+	drun-match-fields: "name";
+}
+
+@theme "~/.config/rofi/themes/application_launcher.rasi"

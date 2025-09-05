@@ -1,0 +1,8 @@
+@import "~/.config/rofi/configs/common.rasi"
+
+configuration
+{
+    font: "Comic Sans MS Bold 14";
+}
+
+@theme "~/.config/rofi/themes/window_switcher.rasi"

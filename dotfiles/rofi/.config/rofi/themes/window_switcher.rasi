@@ -55,7 +55,7 @@
 /* -- General Element Styling -- */
 /* This is the base style for all elements in a list (e.g., search results). */
 element {
-    padding: 5px;
+    padding: 5px 5px 5px 20px;
     spacing: 5px;
     margin:  0px 0px 10px 0px;
     border:  2px;
@@ -247,6 +247,7 @@ textbox-prompt-colon {
     spacing:           0;
     placeholder-color: var(grey);
     placeholder:       "Type to filter";
+    border-radius: 0;
 }
 
 
