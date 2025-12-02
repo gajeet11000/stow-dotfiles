@@ -13,8 +13,8 @@ alias fontlist="fc-list : family | grep -v 'Noto' | sort -u | fzf"
 # Package Manager
 alias search="yay -Ss "
 alias install="yay -S --needed "
-alias update="yay -Syu --noconfirm --needed --answerdiff None --answerclean NotInstalled",
-alias remove="yay -Rd "
+alias update="yay -Syu --noconfirm --needed --answerdiff None --answerclean NotInstalled && flatpak update -y"
+alias remove="yay -Rnsd "
 
 fish_vi_key_bindings
 bind -M insert -m default ii backward-char force-repaint
