@@ -9,6 +9,7 @@ alias ll="lsd -1 -hal --blocks permission,user,size,name --group-dirs=first"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias fontlist="fc-list : family | grep -v 'Noto' | sort -u | fzf"
+alias task="go-task"
 
 # Package Manager
 alias search="yay -Ss "
