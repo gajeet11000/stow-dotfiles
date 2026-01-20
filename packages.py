@@ -37,6 +37,7 @@ ARCH_PACKAGES = {
     "dbeaver-ce-jre-bin",
     "docker",
     "docker-compose",
+    "docker-buildx",
     "dosfstools",
     "dunst",
     "fastfetch",
