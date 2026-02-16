@@ -1,0 +1,162 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "alt-,": "project_panel::CollapseAllEntries",
+    },
+  },
+  {
+    "context": "Editor || Terminal || ProjectPanel || Dock",
+    "bindings": {
+      "alt-shift-k": "workspace::IncreaseActiveDockSize",
+      "alt-shift-j": "workspace::DecreaseActiveDockSize",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-t": "workspace::NewTerminal",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
+      "alt-e": "pane::CloseActiveItem",
+      "ctrl-f": "terminal::ScrollLineDown",
+      "ctrl-b": "terminal::ScrollLineUp",
+      "ctrl-shift-f": "terminal::SearchTest",
+    },
+  },
+  {
+    "context": "Editor && VimControl && !menu",
+    "bindings": {
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
+      "alt-f": "editor::ToggleFold",
+      "alt-shift-f": "editor::FoldFunctionBodies",
+      "alt-h": "buffer_search::DeployReplace",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "alt-shift-j": "vim::ResizePaneDown",
+      "alt-shift-k": "vim::ResizePaneUp",
+      "alt-shift-h": "vim::ResizePaneLeft",
+      "alt-shift-l": "vim::ResizePaneRight",
+
+      "shift-k": "editor::Hover",
+      "g c c": "vim::ToggleComments",
+
+      "space e": "workspace::ToggleLeftDock",
+      "space space": "file_finder::Toggle",
+
+      "space c a": "editor::ToggleCodeActions",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "space c d": "diagnostics::Deploy",
+      "space c s": "outline::Toggle",
+
+      "space g d": "editor::GoToDefinition",
+      "space g v": "editor::GoToDefinitionSplit",
+      "space g r": "editor::FindAllReferences",
+
+      "space s s": "project_symbols::Toggle",
+
+      "space b o": "pane::CloseOtherItems",
+      "space b d": "pane::CloseActiveItem",
+      "space b r": "pane::ReopenClosedItem",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      // "shift-s": "vim::PushAddSurrounds",
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      // "s": "vim::PushSneak",
+      // "shift-s": "vim::PushSneakBackward",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-t": "workspace::OpenInTerminal",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "shift-i": "project_panel::ToggleHideGitIgnore",
+      "shift-h": "project_panel::ToggleHideHidden",
+      "alt-r": "project_panel::Rename",
+      "alt-j": "project_panel::SelectNextDirectory",
+      "alt-k": "project_panel::SelectPrevDirectory",
+      "a": "project_panel::NewFile",
+      "d": "project_panel::NewDirectory",
+      "alt-d": "project_panel::Delete",
+      "ctrl-d ctrl-d": "project_panel::Duplicate",
+      "alt-shift-o": "project_panel::RevealInFileManager",
+      "space e": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+    },
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+    },
+  },
+  {
+    "context": "(Editor && (showing_code_actions || showing_completions))",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+    },
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+  {
+    "context": "(Editor && (showing_code_actions || showing_completions))",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrevious",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+  {
+    "context": "Workspace || Editor && VimControl && !menu",
+    "bindings": {
+      "ctrl-/": "terminal_panel::Toggle",
+    },
+  },
+]

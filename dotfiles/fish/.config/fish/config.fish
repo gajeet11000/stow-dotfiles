@@ -10,12 +10,14 @@ alias lg="lazygit"
 alias ld="lazydocker"
 alias fontlist="fc-list : family | grep -v 'Noto' | sort -u | fzf"
 alias task="go-task"
+alias struct="struct.py"
 
 # Package Manager
 alias search="yay -Ss "
 alias install="yay -S --needed "
 alias update="yay -Syu --noconfirm --needed --answerdiff None --answerclean NotInstalled && flatpak update -y"
 alias remove="yay -Rnsd "
+
 
 fish_vi_key_bindings
 bind -M insert -m default ii backward-char force-repaint
@@ -24,6 +26,7 @@ bind -M insert \ef accept-autosuggestion
 starship init fish | source
 
 set -gx NVM_DIR "$HOME/.nvm"
+set -gx PATH $HOME/.bin $PATH
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
