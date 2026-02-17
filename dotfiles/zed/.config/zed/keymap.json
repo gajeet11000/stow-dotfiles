@@ -87,7 +87,7 @@
   {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
-      // "s": "vim::PushSneak",
+      "s": "vim::PushSneak",
       // "shift-s": "vim::PushSneakBackward",
     },
   },
@@ -104,7 +104,7 @@
     },
   },
   {
-    "context": "ProjectPanel",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
       "shift-i": "project_panel::ToggleHideGitIgnore",
       "shift-h": "project_panel::ToggleHideHidden",

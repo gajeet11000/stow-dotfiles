@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "tabs": {
+    "git_status": true,
+  },
+  "git_panel": {
+    "tree_view": true,
+  },
   "auto_install_extensions": {
     "html": true,
     "catppuccin": true,
