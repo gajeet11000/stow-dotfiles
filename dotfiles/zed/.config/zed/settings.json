@@ -7,6 +7,37 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-5.2-codex",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          // Ruff server settings go here
+          "lineLength": 80,
+          "lint": {
+            "extendSelect": ["I"],
+          },
+        },
+      },
+    },
+  },
+  "languages": {
+    "Python": {
+      "code_actions_on_format": {
+        // Organize imports
+        "source.organizeImports.ruff": true,
+        // Fix all auto-fixable lint violations
+        "source.fixAll.ruff": true,
+      },
+    },
+  },
   "tabs": {
     "git_status": true,
   },
@@ -63,5 +94,4 @@
     "dark": "Catppuccin Mocha",
   },
   "colorize_brackets": true,
-  "formatter": "auto",
 }
