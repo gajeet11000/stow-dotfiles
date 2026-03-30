@@ -25,7 +25,7 @@
     },
   },
   {
-    "context": "Terminal",
+    "context": "Terminal && not_editing",
     "bindings": {
       "H": "pane::ActivatePreviousItem",
       "L": "pane::ActivateNextItem",

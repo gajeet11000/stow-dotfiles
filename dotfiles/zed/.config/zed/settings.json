@@ -16,6 +16,28 @@
     "model_parameters": [],
   },
   "lsp": {
+    "eslint": {
+      "settings": {
+        "codeActionOnSave": {
+          "rules": ["import/order"],
+        },
+      },
+    },
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
     "ruff": {
       "initialization_options": {
         "settings": {
@@ -36,6 +58,27 @@
         // Fix all auto-fixable lint violations
         "source.fixAll.ruff": true,
       },
+    },
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": "prettier",
+      "format_on_save": "on",
     },
   },
   "tabs": {
@@ -94,4 +137,5 @@
     "dark": "Catppuccin Mocha",
   },
   "colorize_brackets": true,
+  "soft_wrap": "editor_width",
 }
