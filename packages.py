@@ -9,7 +9,7 @@ AUR_PACKAGES = {
     "papirus-folders-catppuccin-git",
     "picom-simpleanims-git",
     "postman-bin",
-    "riseup-vpn",
+    "proton-vpn-gtk-app",
     "rustdesk-bin",
     "slack-desktop",
     "stacer-bin",
