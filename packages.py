@@ -115,6 +115,7 @@ ARCH_PACKAGES = {
     "ttf-ubuntu-font-family",
     "tumbler",
     "unrar",
+    "uv",
     "uwsm",
     "volumeicon",
     "waybar",
