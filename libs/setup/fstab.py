@@ -1,4 +1,5 @@
 import subprocess
+
 import settings
 
 
@@ -7,10 +8,10 @@ def add_windows_storage_fstab():
     Add Windows and Storage partitions to /etc/fstab if not already present.
     """
     windows_entry = (
-        "LABEL=Windows /mnt/Windows auto nosuid,nodev,nofail,x-gvfs-show 0 0"
+        "LABEL=Windows /mnt/Windows ntfs3 rw,uid=1000,gid=1000,nofail,x-gvfs-show 0 0"
     )
     storage_entry = (
-        "LABEL=Storage /mnt/Storage auto nosuid,nodev,nofail,x-gvfs-show 0 0"
+        "LABEL=Storage /mnt/Storage ntfs3 rw,uid=1000,gid=1000,nofail,x-gvfs-show 0 0"
     )
     to_add = []
     try:
