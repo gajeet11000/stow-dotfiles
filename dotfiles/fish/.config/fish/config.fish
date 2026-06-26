@@ -27,6 +27,7 @@ starship init fish | source
 
 set -gx NVM_DIR "$HOME/.nvm"
 set -gx PATH $HOME/.bin $PATH
+set -gx PATH $HOME/.local/bin $PATH
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
