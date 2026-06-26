@@ -6,15 +6,15 @@ AUR_PACKAGES = {
     "kvantum-theme-catppuccin-git",
     "noisetorch-bin",
     "papirus-folders-catppuccin-git",
+    "sublime-text-4",
+    "slack-desktop",
+    "postman-bin",
 }
 
 FLATPAK_PACKAGES = {
     "com.rustdesk.RustDesk",
     "no.mifi.losslesscut",
-    "com.slack.Slack",
-    "com.sublimehq.SublimeText",
     "com.discordapp.Discord",
-    "com.getpostman.Postman",
     "org.localsend.localsend_app",
 }
 
