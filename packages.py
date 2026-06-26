@@ -1,4 +1,5 @@
 AUR_PACKAGES = {
+    "visual-studio-code-bin",
     "bibata-rainbow-cursor-theme",
     "catppuccin-gtk-theme-mocha",
     "kvantum-theme-catppuccin-git",
@@ -7,7 +8,6 @@ AUR_PACKAGES = {
 }
 
 FLATPAK_PACKAGES = {
-    "com.visualstudio.code",
     "app.zen_browser.zen",
     "com.rustdesk.RustDesk",
     "no.mifi.losslesscut",
