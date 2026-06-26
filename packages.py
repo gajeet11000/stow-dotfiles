@@ -1,4 +1,5 @@
 AUR_PACKAGES = {
+    "zen-browser-bin",
     "visual-studio-code-bin",
     "bibata-rainbow-cursor-theme",
     "catppuccin-gtk-theme-mocha",
@@ -8,7 +9,6 @@ AUR_PACKAGES = {
 }
 
 FLATPAK_PACKAGES = {
-    "app.zen_browser.zen",
     "com.rustdesk.RustDesk",
     "no.mifi.losslesscut",
     "com.slack.Slack",
