@@ -1,16 +1,16 @@
 import subprocess
 
-from packages import ARCH_PACKAGES, AUR_PACKAGES
+from packages import ARCH_PACKAGES, AUR_PACKAGES, FLATPAK_PACKAGES
 
 
 class PackageInstaller:
     def install_packages(self):
-        """
-        Install all packages.
-        """
+        """Install Arch, AUR, and Flatpak packages."""
+
+        # Install Arch + AUR packages
         all_packages = ARCH_PACKAGES | AUR_PACKAGES
 
-        main_command = [
+        yay_cmd = [
             "yay",
             "-Syu",
             "--noconfirm",
@@ -19,11 +19,28 @@ class PackageInstaller:
             "None",
             "--answerclean",
             "NotInstalled",
+            *sorted(all_packages),
         ]
 
-        cmd = main_command + list(all_packages)
         try:
-            subprocess.run(cmd, check=True)
-            print("All packages installed successfully.")
+            subprocess.run(yay_cmd, check=True)
+            print("Arch/AUR packages installed successfully.")
         except subprocess.CalledProcessError as e:
-            print("Error installing all packages", e)
+            print(f"Error installing Arch/AUR packages: {e}")
+            return
+
+        # Install Flatpak packages
+        if FLATPAK_PACKAGES:
+            flatpak_cmd = [
+                "flatpak",
+                "install",
+                "-y",
+                "flathub",
+                *sorted(FLATPAK_PACKAGES),
+            ]
+
+            try:
+                subprocess.run(flatpak_cmd, check=True)
+                print("Flatpak packages installed successfully.")
+            except subprocess.CalledProcessError as e:
+                print(f"Error installing Flatpak packages: {e}")
