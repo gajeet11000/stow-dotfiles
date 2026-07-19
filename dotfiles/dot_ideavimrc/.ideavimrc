@@ -1,0 +1,238 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+" CUSTOM KEYBINDINGS
+
+let mapleader=" "
+
+" paste without overwriting default register
+xnoremap p P
+
+" redo
+noremap U <C-r>
+
+" map black hole register
+noremap \ "_
+
+" sync vim clipboard with OS clipboard
+set clipboard^=unnamed,unnamedplus
+
+" smart join lines
+set ideajoin
+
+" match angle brackets
+set matchpairs+=<:>
+
+" open ideavimrc file
+noremap <leader>cc :edit ~/.ideavimrc<CR>
+
+" source .ideavimrc
+noremap <leader>cs :source ~/.ideavimrc<CR>:nohlsearch<CR>
+
+" highlight search results
+set hlsearch
+
+" remove search highlight
+nnoremap <Esc> :nohlsearch<CR>
+
+" make search case-insensitive
+set ignorecase
+
+" make search case-sensitive when capital letter is used
+set smartcase
+
+" search while typing
+set incsearch
+
+" special word casing navigation | move to next word of a camelcase
+noremap w [w
+
+" special word casing navigation | more to previous word of a camelcase
+noremap b [b
+
+" special word casing navigation | move to end of the next word of a camelcase
+noremap e ]w
+
+" move to left split
+map <A-h> <C-w>h
+
+" move to right split
+map <A-l> <C-w>l
+
+" move to bottom split
+map <A-j> <C-w>j
+
+" move to up split
+map <A-k> <C-w>k
+
+" open vertical split to the right
+map <leader>wv <Action>(SplitVertically)
+
+" open horizontal split to the bottom
+map <leader>wh <Action>(SplitHorizontally)
+
+" unsplit current split
+map <leader>ww <Action>(Unsplit)
+
+" remove all splits
+map <leader>wa <Action>(UnsplitAll)
+
+" Open global search classes
+map <leader>sc <Action>(GotoClass)
+
+" Open search files
+map <leader>sf <Action>(GotoFile)
+
+" Open search Symbols
+map <leader>ss <Action>(GotoSymbol)
+
+" Open search Actions
+map <leader>sa <Action>(GotoAction)
+
+" Goto Declaration
+map <leader>gd <Action>(GotoDeclaration)
+
+" Goto Type Declaration
+map <leader>gy <Action>(GotoTypeDeclaration)
+
+" Goto Implementation (shows list of all child classes
+" of a base class
+map <leader>gi <Action>(GotoImplementation)
+
+" Toggle Test and Actual Implementation Declaration
+map <leader>gt <Action>(GotoTest)
+
+" Goto Super classes and interface (shows list of all super
+" classes and interface it inherits or implements of a base class)
+map <leader>gm <Action>(GotoSuperMethod)
+
+" Find and search usages of an implementation
+map <leader>ug <Action>(FindUsages)
+
+" Find usages of an implementation in a floating window
+map <leader>uu <Action>(ShowUsages)
+
+" Show hover Info
+map <leader>sh <Action>(ShowHoverInfo)
+
+" File Structure popup (shows all classes, variables, and methods of a file in tree)
+map <leader>oo <Action>(FileStructurePopup)
+
+" Open Find
+map <S-f> <Action>(Find)
+
+" Open Relace
+map <S-r> <Action>(Replace)
+
+" Open Find in Path (Project)
+map <leader>ff <Action>(FindInPath)
+
+" Open Find and Replace in Path (Project)
+map <leader>fr <Action>(ReplaceInPath)
+
+" Refactor variable
+map <leader>re <Action>(RenameElement)
+
+" Refactor QuickMenuList
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Show Intention bulb
+map <leader>aa <Action>(ShowIntentionActions)
+
+" Show surround with list
+map <leader>sw <Action>(SurroundWith)
+
+" Code Generation menu
+map <S-space> <Action>(Generate)
+
+" Goto next error
+map <leader>en <Action>(GotoNextError)
+
+" Goto previous error
+map <leader>ep <Action>(GotoPreviousError)
+
+" Goto last change location
+map <leader>lc <Action>(JumpToLastChange)
+
+" Show recent locations
+map <leader>ll <Action>(RecentLocations)
+
+" Show recent files
+map <C-;> <Action>(RecentFiles)
+
+" Go forward in the recent locations
+map <C-l> <Action>(Forward)
+
+" Go backward in the recent locations
+map <C-h> <Action>(Back)
+
+" Go backward in the recent locations
+map <A-[> <Action>(MethodUp)
+
+" Go backward in the recent locations
+map <A-]> <Action>(MethodDown)
+
+" Goto next tab
+map <S-l> <Action>(NextTab)
+
+" Goto previous tab
+map <S-h> <Action>(PreviousTab)
+
+" Organize Imports
+map <leader>oi <Action>(OptimizeImports)
+
+" Reorganize Code
+map <leader>ra <Action>(RearrangeCode)
+
+" Copy absolute path of the current file open in editor
+map <leader>ca <Action>(CopyAbsolutePath)
+
+" Copy file name of the file open in editor
+map <leader>cf <Action>(CopyFileName)
+
+" Copy absolute path of the current file open in editor
+map <leader>cp <Action>(CopyContentRootPath)
+
+" Open new file
+map <leader>nf <Action>(NewFile)
+
+" Close Current active editor
+map <leader>bd <Action>(CloseContent)
+
+" Close all open editors
+map <leader>bo <Action>(CloseAllEditors)
+
+" Toggle Terminal
+map <C-j> <Action>(ActivateTerminalToolWindow)
