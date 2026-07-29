@@ -1,0 +1,10 @@
+
+require("configs.monitors")
+require("configs.environment")
+require("configs.settings")
+require("configs.autostart")
+require("configs.keybindings")
+require("configs.animations")
+require("configs.input")
+require("configs.window_workspaces")
+require("configs.plugins")
