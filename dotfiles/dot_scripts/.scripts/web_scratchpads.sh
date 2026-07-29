@@ -19,4 +19,4 @@ if [ -z "$window" ]; then
 fi
 
 # Toggle the special workspace for the specified application
-hyprctl dispatch togglespecialworkspace "$workspace_name"
+hyprctl dispatch "hl.dsp.workspace.toggle_special(\"$workspace_name\")"

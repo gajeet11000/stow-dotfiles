@@ -5,19 +5,16 @@ subprocess.run(
         "sudo",
         "reflector",
         "--verbose",
-        "-c",
-        "NL",
-        "-c",
-        "SG",
-        "-c",
-        "US",
         "--protocol",
         "https",
-        "--sort",
-        "age",
         "--latest",
-        "20",
+        "50",              # Consider the latest 50 mirrors
         "--download-timeout",
         "5",
-    ]
+        "--sort",
+        "rate",            # Benchmark mirrors and sort by download speed
+        "--save",
+        "/etc/pacman.d/mirrorlist",
+    ],
+    check=True,
 )
