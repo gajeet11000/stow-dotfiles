@@ -33,6 +33,7 @@ M.CLIPBOARD_SPECIAL =
 
 M.CLIPBOARD = "copyq show"
 M.TOGGLE_NOTIFICATION_CENTER = "swaync-client -t"
+M.SCREENSHOT = "env XDG_CURRENT_DESKTOP=Sway flameshot gui"
 
 M.CURSOR_SIZE = "24"
 M.CURSOR_THEME = "Bibata-Rainbow-Modern"

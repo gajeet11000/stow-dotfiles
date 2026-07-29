@@ -18,7 +18,8 @@ hl.bind(SUPER .. "+B", hl.dsp.exec_cmd(vars.BROWSER))
 hl.bind(SUPER .. "+SPACE", hl.dsp.exec_cmd(vars.LAUNCHER))
 hl.bind(SUPER_SHIFT .. "+Q", hl.dsp.exec_cmd(vars.LOGOUT))
 hl.bind(SUPER_CTRL .. "+W", hl.dsp.exec_cmd(vars.RELOAD_WAYBAR))
-hl.bind("Print", hl.dsp.exec_cmd("env XDG_CURRENT_DESKTOP=Sway flameshot gui"))
+hl.bind("Print", hl.dsp.exec_cmd(vars.SCREENSHOT))
+hl.bind(SUPER .. "+P", hl.dsp.exec_cmd(vars.SCREENSHOT))
 hl.bind(SUPER .. "+D", hl.dsp.exec_cmd(vars.FILE_MANAGER .. " " .. vars.HOME .. "/Downloads"))
 hl.bind(SUPER .. "+Q", hl.dsp.exec_cmd(vars.CALCULATOR))
 hl.bind(SUPER .. "+N", hl.dsp.exec_cmd(vars.TOGGLE_NOTIFICATION_CENTER))
@@ -33,7 +34,6 @@ hl.bind(SUPER .. "+G", hl.dsp.group.toggle())
 hl.bind(SUPER_ALT .. "+F", hl.dsp.window.float())
 hl.bind(SUPER_CTRL .. "+R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(SUPER_ALT .. "+V", hl.dsp.layout("togglesplit"))
--- hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(vars.CLIPBOARD))
 
 -- Move focus (Arrow keys)
 hl.bind(SUPER .. "+LEFT",  hl.dsp.focus({direction="l"}))
@@ -59,45 +59,18 @@ hl.bind(SUPER_SHIFT .. "+L", hl.dsp.window.move({ direction = "r" }))
 hl.bind(SUPER_SHIFT .. "+K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(SUPER_SHIFT .. "+J", hl.dsp.window.move({ direction = "d" }))
 
--- Switch workspaces with mainMod + [0-9]
-hl.bind(SUPER .. "+1", hl.dsp.focus({ workspace = "1" }))
-hl.bind(SUPER .. "+2", hl.dsp.focus({ workspace = "2" }))
-hl.bind(SUPER .. "+3", hl.dsp.focus({ workspace = "3" }))
-hl.bind(SUPER .. "+4", hl.dsp.focus({ workspace = "4" }))
-hl.bind(SUPER .. "+5", hl.dsp.focus({ workspace = "5" }))
-hl.bind(SUPER .. "+6", hl.dsp.focus({ workspace = "6" }))
-hl.bind(SUPER .. "+7", hl.dsp.focus({ workspace = "7" }))
-hl.bind(SUPER .. "+8", hl.dsp.focus({ workspace = "8" }))
-hl.bind(SUPER .. "+9", hl.dsp.focus({ workspace = "9" }))
-hl.bind(SUPER .. "+0", hl.dsp.focus({ workspace = "10" }))
+-- Switch workspaces with SUPER + [0-9]
+-- Move and follow active window to a workspace with SUPER + SHIFT + [0-9]
+-- Move active window without follow to a workspace with SUPER + CTRL + [0-9]
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(SUPER .. "+" .. key, hl.dsp.focus({ workspace=i }))
+    hl.bind(SUPER_SHIFT .. "+" .. key, hl.dsp.window.move({ workspace=i, follow=true }))
+    hl.bind(SUPER_CTRL .. "+" .. key, hl.dsp.window.move({ workspace=i, follow=false }))
+end
 
--- Move active window to a workspace and FOLLOW WORKSPACE
-hl.bind(SUPER_SHIFT .. "+1", hl.dsp.window.move({ workspace = "1", follow = true }))
-hl.bind(SUPER_SHIFT .. "+2", hl.dsp.window.move({ workspace = "2", follow = true }))
-hl.bind(SUPER_SHIFT .. "+3", hl.dsp.window.move({ workspace = "3", follow = true }))
-hl.bind(SUPER_SHIFT .. "+4", hl.dsp.window.move({ workspace = "4", follow = true }))
-hl.bind(SUPER_SHIFT .. "+5", hl.dsp.window.move({ workspace = "5", follow = true }))
-hl.bind(SUPER_SHIFT .. "+6", hl.dsp.window.move({ workspace = "6", follow = true }))
-hl.bind(SUPER_SHIFT .. "+7", hl.dsp.window.move({ workspace = "7", follow = true }))
-hl.bind(SUPER_SHIFT .. "+8", hl.dsp.window.move({ workspace = "8", follow = true }))
-hl.bind(SUPER_SHIFT .. "+9", hl.dsp.window.move({ workspace = "9", follow = true }))
-hl.bind(SUPER_SHIFT .. "+0", hl.dsp.window.move({ workspace = "10", follow = true }))
 hl.bind(SUPER_SHIFT .. "+COMMA", hl.dsp.window.move({ workspace = "-1", follow = true }))
 hl.bind(SUPER_SHIFT .. "+PERIOD", hl.dsp.window.move({ workspace = "+1", follow = true }))
-
--- Move active window to a workspace WITHOUT FOLLOWING
-hl.bind(SUPER_CTRL .. "+1", hl.dsp.window.move({ workspace = "1", follow = false }))
-hl.bind(SUPER_CTRL .. "+2", hl.dsp.window.move({ workspace = "2", follow = false }))
-hl.bind(SUPER_CTRL .. "+3", hl.dsp.window.move({ workspace = "3", follow = false }))
-hl.bind(SUPER_CTRL .. "+4", hl.dsp.window.move({ workspace = "4", follow = false }))
-hl.bind(SUPER_CTRL .. "+5", hl.dsp.window.move({ workspace = "5", follow = false }))
-hl.bind(SUPER_CTRL .. "+6", hl.dsp.window.move({ workspace = "6", follow = false }))
-hl.bind(SUPER_CTRL .. "+7", hl.dsp.window.move({ workspace = "7", follow = false }))
-hl.bind(SUPER_CTRL .. "+8", hl.dsp.window.move({ workspace = "8", follow = false }))
-hl.bind(SUPER_CTRL .. "+9", hl.dsp.window.move({ workspace = "9", follow = false }))
-hl.bind(SUPER_CTRL .. "+0", hl.dsp.window.move({ workspace = "10", follow = false }))
-hl.bind(SUPER_CTRL .. "+COMMA", hl.dsp.window.move({ workspace = "-1", follow = false }))
-hl.bind(SUPER_CTRL .. "+PERIOD", hl.dsp.window.move({ workspace = "+1", follow = false }))
 
 -- Example special workspace (scratchpad)
 hl.bind(SUPER .. "+S", hl.dsp.workspace.toggle_special("magic"))
