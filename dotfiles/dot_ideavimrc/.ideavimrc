@@ -76,14 +76,14 @@ set smartcase
 " search while typing
 set incsearch
 
-" special word casing navigation | move to next word of a camelcase
-noremap w [w
+" Move to previous camelCase subword
+noremap W [w
 
-" special word casing navigation | more to previous word of a camelcase
-noremap b [b
+" Move to previous camelCase subword
+noremap B [b
 
-" special word casing navigation | move to end of the next word of a camelcase
-noremap e ]w
+" Move to end of next camelCase subword
+noremap E ]e
 
 " move to left split
 map <A-h> <C-w>h
@@ -236,3 +236,9 @@ map <leader>bo <Action>(CloseAllEditors)
 
 " Toggle Terminal
 map <C-j> <Action>(ActivateTerminalToolWindow)
+
+" Fast scroll up
+noremap <A-k> {
+
+" Fast scroll down
+noremap <A-j> }
