@@ -122,6 +122,7 @@ ARCH_PACKAGES = {
     "uwsm",
     "volumeicon",
     "waybar",
+    "weston",  # required for starting wayland session
     "wl-clipboard",
     "xarchiver",
     "xdg-desktop-portal",
