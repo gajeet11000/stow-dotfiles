@@ -62,6 +62,7 @@ ARCH_PACKAGES = {
     "hyprlock",
     "hyprpaper",
     "hyprpicker",
+    "hyprshutdown",
     "imv",
     "jdk17-openjdk",
     "jq",
