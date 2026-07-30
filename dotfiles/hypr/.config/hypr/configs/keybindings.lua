@@ -97,11 +97,10 @@ hl.bind(SUPER_ALT .. "+SPACE", hl.dsp.exec_cmd(utils.scratchpad_cmd({
     exec="chromium --app=https://music.youtube.com"
 })))
 
-hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(utils.scratchpad_cmd({
-    identifier="clipse",
-    scratch="Clipboard",
-    exec="kitty --class clipse -e clipse"
-})))
+hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(
+    "kitty --class clipse -o font_size=14 -e clipse",
+    {float=true, size={"(monitor_w*0.5)", "(monitor_h*0.5)"}}
+))
 
 hl.bind(SUPER .. "+PERIOD", hl.dsp.focus({workspace="e+1"}))
 hl.bind(SUPER .. "+COMMA", hl.dsp.focus({workspace="e-1"}))
