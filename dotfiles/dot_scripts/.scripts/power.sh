@@ -9,7 +9,7 @@
 if [[ "$1" == "exit" ]]; then
     echo ":: Exit"
     sleep 0.5
-    killall -9 Hyprland 
+    command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'
     sleep 2
 fi
 
