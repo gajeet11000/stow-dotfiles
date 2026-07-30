@@ -24,7 +24,6 @@ hl.bind(SUPER .. "+D", hl.dsp.exec_cmd(vars.FILE_MANAGER .. " " .. vars.HOME .. 
 hl.bind(SUPER .. "+Q", hl.dsp.exec_cmd(vars.CALCULATOR))
 hl.bind(SUPER .. "+N", hl.dsp.exec_cmd(vars.TOGGLE_NOTIFICATION_CENTER))
 hl.bind(SUPER_ALT .. "+B", hl.dsp.exec_cmd(vars.SET_RANDOM_WALLPAPER))
-hl.bind(SUPER .. "+W", hl.dsp.exec_cmd(vars.WINDOWS_SWITCHER))
 
 -- Window actions
 hl.bind(SUPER .. "+F", hl.dsp.window.fullscreen({mode="maximized", action="toggle"}))
@@ -85,10 +84,24 @@ hl.bind(SUPER .. "+MINUS", function() utils.zoom(-0.1) end, {repeating=true})
 hl.bind(SUPER .. "+KP_ADD", function() utils.zoom(0.1) end, {repeating=true})
 hl.bind(SUPER .. "+KP_SUBTRACT", function() utils.zoom(-0.1) end, {repeating=true})
 
--- WhatsApp / Spotify scratchpads
-hl.bind(SUPER_ALT .. "+P", hl.dsp.exec_cmd(vars.WHATSAPP_SPECIAL))
-hl.bind(SUPER_ALT .. "+SPACE", hl.dsp.exec_cmd(vars.SPOTIFY_SPECIAL))
-hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(vars.CLIPBOARD_SPECIAL))
+-- Scratchpads/Special workspaces
+hl.bind(SUPER_ALT .. "+P", hl.dsp.exec_cmd(utils.scratchpad_cmd({
+    identifier="Whatsapp",
+    scratch="Whatsapp",
+    exec="chromium --app=https://web.whatsapp.com"
+})))
+
+hl.bind(SUPER_ALT .. "+SPACE", hl.dsp.exec_cmd(utils.scratchpad_cmd({
+    identifier="Youtube Music",
+    scratch="Music",
+    exec="chromium --app=https://music.youtube.com"
+})))
+
+hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(utils.scratchpad_cmd({
+    identifier="clipse",
+    scratch="Clipboard",
+    exec="kitty --class clipse -e clipse"
+})))
 
 hl.bind(SUPER .. "+PERIOD", hl.dsp.focus({workspace="e+1"}))
 hl.bind(SUPER .. "+COMMA", hl.dsp.focus({workspace="e-1"}))

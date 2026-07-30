@@ -17,34 +17,6 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
-hl.window_rule({
-    match = {
-        title = "(web.whatsapp.com_/)",
-    },
-    tile = true,
-})
-
-hl.window_rule({
-    match = {
-        title = "(Whatsapp)",
-    },
-    workspace = "special:whatsapp",
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "(open.spotify.com_/)",
-    },
-    tile = true,
-})
-
-hl.window_rule({
-    match = {
-        title = "(Spotify)",
-    },
-    workspace = "special:spotify",
-})
-
 -- Floating
 hl.window_rule({
     match = {
@@ -230,13 +202,6 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        class = "com.github.hluk.copyq",
-    },
-    float = true,
-})
-
-hl.window_rule({
-    match = {
         class = "(org.gnome.Calculator)",
     },
     float = true,
@@ -278,13 +243,6 @@ hl.window_rule({
     },
     float = true,
 })
-
--- ######## Workspace rules ########
-hl.workspace_rule({
-    workspace = "special:special",
-    gaps_out = 30,
-})
-
 
 -- ######## Layer rules ########
 

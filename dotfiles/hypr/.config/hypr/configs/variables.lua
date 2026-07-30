@@ -22,16 +22,8 @@ M.SET_RANDOM_WALLPAPER = M.SCRIPTS_DIR .. "/ChangeWallpaper.sh"
 M.WATCH_VSCODE_WORKSPACE = M.SCRIPTS_DIR .. "/WatchForVSCodeWorkspace.sh"
 M.VOLUME = M.SCRIPTS_DIR .. "/Volume.sh"
 M.BRIGHTNESS = M.SCRIPTS_DIR .. "/Brightness.sh"
-M.WINDOWS_SWITCHER = M.SCRIPTS_DIR .. "/windows_switcher.py"
+M.SCRATCHPAD = M.SCRIPTS_DIR .. "/scratchpads.sh"
 
-M.WHATSAPP_SPECIAL =
-    M.SCRIPTS_DIR .. "/web_scratchpads.sh web.whatsapp.com Whatsapp"
-M.SPOTIFY_SPECIAL =
-    M.SCRIPTS_DIR .. "/web_scratchpads.sh music.youtube.com Music"
-M.CLIPBOARD_SPECIAL = 
-    M.SCRIPTS_DIR .. "/app_scratchpads.sh copyq Clipboard copyq show"
-
-M.CLIPBOARD = "copyq show"
 M.TOGGLE_NOTIFICATION_CENTER = "swaync-client -t"
 M.SCREENSHOT = "env XDG_CURRENT_DESKTOP=Sway flameshot gui"
 

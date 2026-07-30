@@ -1,3 +1,5 @@
+local vars = require("configs.variables")
+
 local M = {}
 
 ---@param offset number
@@ -17,6 +19,13 @@ function M.zoom(offset)
     end
     current = math.max(MIN_ZOOM, math.min(MAX_ZOOM, current))
     hl.config({ cursor = { zoom_factor = current } })
+end
+
+function M.scratchpad_cmd(opts)
+    return string.format(
+        '%s identifier="%s" scratch="%s" exec="%s"',
+        vars.SCRATCHPAD, opts.identifier, opts.scratch, opts.exec
+    )
 end
 
 return M
