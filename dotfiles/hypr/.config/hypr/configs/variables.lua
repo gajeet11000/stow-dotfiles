@@ -14,17 +14,17 @@ M.LAUNCHER = string.format(
 M.BROWSER = "zen-browser"
 M.SCRATCHPAD_BROWSER = "chromium"
 M.CALCULATOR = "gnome-calculator"
-M.LOGOUT = "wlogout"
 
 M.REFRESH_MIRRORS = M.SCRIPTS_DIR .. "/refresh_mirrors.sh"
 M.RELOAD_WAYBAR = M.SCRIPTS_DIR .. "/reload_waybar.sh"
 M.VOLUME = M.SCRIPTS_DIR .. "/Volume.sh"
 M.BRIGHTNESS = M.SCRIPTS_DIR .. "/Brightness.sh"
 M.SCRATCHPAD = M.SCRIPTS_DIR .. "/scratchpads.sh"
-M.SET_RANDOM_WALLPAPER = "waypaper --random"
+M.LOGOUT = M.SCRIPTS_DIR .. "/rofi-power-menu.sh"
 
 M.TOGGLE_NOTIFICATION_CENTER = "swaync-client -t"
 M.SCREENSHOT = "env XDG_CURRENT_DESKTOP=Sway flameshot gui"
+M.SET_RANDOM_WALLPAPER = "waypaper --random"
 
 M.CURSOR_SIZE = "24"
 M.CURSOR_THEME = "Bibata-Rainbow-Modern"
