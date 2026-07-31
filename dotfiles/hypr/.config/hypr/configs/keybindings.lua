@@ -22,6 +22,7 @@ hl.bind("Print", hl.dsp.exec_cmd(vars.SCREENSHOT))
 hl.bind(SUPER .. "+P", hl.dsp.exec_cmd(vars.SCREENSHOT))
 hl.bind(SUPER .. "+D", hl.dsp.exec_cmd(vars.FILE_MANAGER .. " " .. vars.HOME .. "/Downloads"))
 hl.bind(SUPER .. "+Q", hl.dsp.exec_cmd(vars.CALCULATOR))
+hl.bind(SUPER .. "+W", hl.dsp.exec_cmd(vars.WINDOW_SWITCHER))
 hl.bind(SUPER .. "+N", hl.dsp.exec_cmd(vars.TOGGLE_NOTIFICATION_CENTER))
 hl.bind(SUPER_ALT .. "+B", hl.dsp.exec_cmd(vars.SET_RANDOM_WALLPAPER))
 

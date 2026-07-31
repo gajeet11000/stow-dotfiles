@@ -20,6 +20,7 @@ M.RELOAD_WAYBAR = M.SCRIPTS_DIR .. "/reload_waybar.sh"
 M.VOLUME = M.SCRIPTS_DIR .. "/Volume.sh"
 M.BRIGHTNESS = M.SCRIPTS_DIR .. "/Brightness.sh"
 M.SCRATCHPAD = M.SCRIPTS_DIR .. "/scratchpads.sh"
+M.WINDOW_SWITCHER = M.SCRIPTS_DIR .. "/window_switcher.sh"
 M.LOGOUT = M.SCRIPTS_DIR .. "/rofi-power-menu.sh"
 
 M.TOGGLE_NOTIFICATION_CENTER = "swaync-client -t"
