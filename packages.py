@@ -49,7 +49,6 @@ ARCH_PACKAGES = {
     "flameshot",
     "fsarchiver",
     "fzf",
-    "gammastep",
     "ghostty",
     "gimp",
     "gnome-calculator",
@@ -63,6 +62,7 @@ ARCH_PACKAGES = {
     "hyprlock",
     "hyprpicker",
     "hyprshutdown",
+    "hyprsunset",
     "imv",
     "jdk17-openjdk",
     "jq",
@@ -129,6 +129,5 @@ ARCH_PACKAGES = {
     "xdg-desktop-portal-hyprland",
     "xdg-desktop-portal-wlr",
     "xf86-input-libinput",
-    "xwallpaper",
     "yazi",
 }
