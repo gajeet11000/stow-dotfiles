@@ -117,6 +117,14 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(vars.VOLUME .. " --toggle-mic"), { l
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(vars.BRIGHTNESS .. " --inc"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(vars.BRIGHTNESS .. " --dec"), { locked = true, repeating = true })
 
+-- Hyprsunset controls
+hl.bind(SUPER_ALT .. " +I", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +5"), {locked = true, repeating=true})
+hl.bind(SUPER_ALT .. " +U", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -5"),{locked = true, repeating=true} )
+hl.bind(SUPER_ALT .. " +0", hl.dsp.exec_cmd("hyprctl hyprsunset temperature +200"),{locked = true, repeating=true})
+hl.bind(SUPER_ALT .. " +9", hl.dsp.exec_cmd("hyprctl hyprsunset temperature -200"),{locked = true, repeating=true})
+hl.bind(SUPER .. " +O", hl.dsp.exec_cmd("hyprctl hyprsunset reset"),{locked = true})
+hl.bind(SUPER_ALT .. " +O", hl.dsp.exec_cmd("hyprctl hyprsunset identity"),{locked = true})
+
 hl.bind(SUPER_ALT .. "+PERIOD", hl.dsp.exec_cmd(vars.VOLUME .. " --inc"), { locked = true, repeating = true })
 hl.bind(SUPER_ALT .. "+COMMA", hl.dsp.exec_cmd(vars.VOLUME .. " --dec"), { locked = true, repeating = true })
 hl.bind(SUPER .. "+M", hl.dsp.exec_cmd(vars.VOLUME .. " --toggle"), { locked = true, repeating = true })
