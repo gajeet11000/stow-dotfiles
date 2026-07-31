@@ -9,6 +9,7 @@ AUR_PACKAGES = {
     "sublime-text-4",
     "slack-desktop",
     "postman-bin",
+    "waypaper",
 }
 
 FLATPAK_PACKAGES = {
@@ -60,7 +61,6 @@ ARCH_PACKAGES = {
     "hypridle",
     "hyprland",
     "hyprlock",
-    "hyprpaper",
     "hyprpicker",
     "hyprshutdown",
     "imv",
