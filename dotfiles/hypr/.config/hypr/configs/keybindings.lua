@@ -12,7 +12,7 @@ local SUPER_ALT = "SUPER+ALT"
 -- Scripts
 hl.bind(SUPER .. "+RETURN", hl.dsp.exec_cmd(vars.TERMINAL))
 hl.bind(SUPER_ALT .. "+N", hl.dsp.exec_cmd(vars.TERMINAL))
-hl.bind(SUPER .. "+E", hl.dsp.exec_cmd(vars.FILE_MANAGER))
+hl.bind(SUPER_SHIFT .. "+E", hl.dsp.exec_cmd(vars.FILE_MANAGER))
 hl.bind(SUPER .. "+A", hl.dsp.exec_cmd(vars.FILE_MANAGER .. " " .. vars.STORAGE_DIR))
 hl.bind(SUPER .. "+B", hl.dsp.exec_cmd(vars.BROWSER))
 hl.bind(SUPER .. "+SPACE", hl.dsp.exec_cmd(vars.LAUNCHER))
@@ -97,6 +97,13 @@ hl.bind(SUPER_ALT .. "+SPACE", hl.dsp.exec_cmd(utils.scratchpad_cmd({
     scratch="Music",
     exec="chromium --app=https://music.youtube.com"
 })))
+
+hl.bind(SUPER .. "+E", hl.dsp.exec_cmd(utils.scratchpad_cmd({
+    identifier="yazi",
+    scratch="Yazi",
+    exec="kitty --class yazi -e yazi"
+})))
+
 
 hl.bind(SUPER .. "+V", hl.dsp.exec_cmd(
     "kitty --class clipse -o font_size=14 -e clipse",
