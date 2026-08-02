@@ -113,6 +113,7 @@ ARCH_PACKAGES = {
     "thunar-archive-plugin",
     "thunar-media-tags-plugin",
     "thunar-volman",
+    "tree-sitter-cli",
     "ttf-cascadia-mono-nerd",
     "ttf-cascadia-code-nerd",
     "ttf-ubuntu-font-family",
