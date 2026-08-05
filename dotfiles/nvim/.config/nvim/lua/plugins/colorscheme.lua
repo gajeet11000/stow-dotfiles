@@ -7,7 +7,7 @@ return {
 	cond = not vim.g.vscode, -- never load inside VS Code, it doesn't render this
 	config = function()
 		require("catppuccin").setup({
-			flavour = "mocha", -- latte, frappe, macchiato, mocha
+			flavour = "macchiato", -- latte, frappe, macchiato, mocha
 			transparent_background = false,
 			integrations = {
 				treesitter = true,
