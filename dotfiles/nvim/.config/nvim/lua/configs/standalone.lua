@@ -148,7 +148,10 @@ map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers
 -- ==========================================================
 -- Git (g group)
 -- ==========================================================
-map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "LazyGit" })
+-- lua/config/keymaps.lua
+vim.keymap.set("n", "<leader>gg", function()
+	Snacks.lazygit({ cwd = vim.g.explorer_root or require("config.utils").get_root() })
+end, { desc = "Lazygit (workspace root)" })
 map("n", "<leader>gf", function() Snacks.picker.git_files() end, { desc = "Find git files" })
 
 -- ==========================================================
