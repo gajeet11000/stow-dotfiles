@@ -16,7 +16,6 @@ vim.opt.termguicolors = true
 
 local map = vim.keymap.set
 
--- lua/configs/standalone.lua (near the top)
 local root_patterns = { ".git", "lua", "package.json", "Cargo.toml", "go.mod", "pyproject.toml", "Makefile" }
 
 local function get_root(buf)
