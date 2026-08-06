@@ -44,4 +44,95 @@ function M.toggle_oil()
   require("oil").toggle_float(dir)
 end
 
+function M.explorer_expand_all(picker, item)
+
+  local Tree = require("snacks.explorer.tree")
+  local Actions = require("snacks.explorer.actions")
+
+  local node = item and Tree:node(item.file) or Tree:node(picker:cwd())
+
+  if not node then
+    return
+  end
+
+  local function expand(n)
+    if n.dir and not n.open then
+      Tree:toggle(n.path)
+    end
+
+    vim.schedule(function()
+      Actions.update(picker, { refresh = true })
+
+      for _, child in pairs(n.children or {}) do
+        if child.dir then
+          expand(child)
+        end
+      end
+    end)
+  end
+
+  expand(node)
+end
+
+function M.explorer_collapse_all(picker, item)
+  local Tree = require("snacks.explorer.tree")
+  local Actions = require("snacks.explorer.actions")
+
+  local node = item and Tree:node(item.file) or Tree:node(picker:cwd())
+
+  if not node then
+    return
+  end
+
+  local function collapse(n)
+    for _, child in pairs(n.children or {}) do
+      if child.dir then
+        collapse(child)
+      end
+    end
+
+    if n.dir and n.open then
+      Tree:toggle(n.path)
+    end
+  end
+
+  collapse(node)
+
+  Actions.update(picker, { refresh = true })
+end
+
+function M.explorer_oil_here(_, item)
+  if not item then
+    return
+  end
+
+  local is_dir = item.dir
+
+  local dir = is_dir
+      and item.file
+      or vim.fn.fnamemodify(item.file, ":h")
+
+  local target_name = is_dir
+      and nil
+      or vim.fn.fnamemodify(item.file, ":t")
+
+  require("oil").open_float(dir, {}, function()
+    if not target_name then
+      return
+    end
+
+    vim.schedule(function()
+      local buf = vim.api.nvim_get_current_buf()
+      local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+
+      for lnum, line in ipairs(lines) do
+        if line:find(target_name, 1, true) then
+          vim.api.nvim_win_set_cursor(0, { lnum, 0 })
+          break
+        end
+      end
+    end)
+  end)
+end
+
 return M

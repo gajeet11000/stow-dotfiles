@@ -18,11 +18,17 @@ vim.opt.linebreak = true
 local map = vim.keymap.set
 local utils = require("configs.utils")
 
+map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+
 vim.keymap.set("n", "<leader>ww", function()
   vim.opt.wrap = not vim.opt.wrap:get()
 end, { desc = "Toggle wrap" })
 
 map("n", "<leader>e", utils.toggle_explorer, { desc = "Explorer (workspace root)" })
+
 map("n", "<leader>o", utils.toggle_oil, { desc = "Oil (file ops)" })
 
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
