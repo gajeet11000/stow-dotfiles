@@ -1,6 +1,3 @@
----@diagnostic disable: undefined-global
--- vscode init lua
-
 local vscode = require("vscode")
 
 vim.opt.ignorecase = true

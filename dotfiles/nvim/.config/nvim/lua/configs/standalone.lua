@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 -- lua/config/standalone.lua
 
 -- ==========================================================
@@ -13,88 +12,18 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
 
 local map = vim.keymap.set
+local utils = require("configs.utils")
 
-local root_patterns = { ".git", "lua", "package.json", "Cargo.toml", "go.mod", "pyproject.toml", "Makefile" }
+vim.keymap.set("n", "<leader>ww", function()
+  vim.opt.wrap = not vim.opt.wrap:get()
+end, { desc = "Toggle wrap" })
 
-local function get_root(buf)
-  buf = buf or 0
-  local file = vim.api.nvim_buf_get_name(buf)
-  if file == "" then
-    return vim.uv.cwd()
-  end
-  local root = vim.fs.root(file, root_patterns)
-  return root or vim.fn.fnamemodify(file, ":p:h")
-end
-
--- Manually (re)pin the workspace, like "Open Folder" in VS Code
-vim.api.nvim_create_user_command("PinRoot", function(opts)
-  vim.g.explorer_root = opts.args ~= "" and vim.fn.fnamemodify(opts.args, ":p:h") or vim.fn.expand("%:p:h")
-  Snacks.explorer({ cwd = vim.g.explorer_root })
-  vim.notify("Workspace pinned: " .. vim.g.explorer_root)
-end, { nargs = "?", complete = "dir" })
---
--- Follow the file in the explorer ONLY if it lives inside the pinned root.
--- Files opened from outside the workspace (e.g. your nvim config) leave the tree untouched.
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = vim.api.nvim_create_augroup("explorer_workspace_follow", { clear = true }),
-  callback = function(ev)
-    if not vim.g.explorer_root then return end
-    if vim.bo[ev.buf].buftype ~= "" then return end -- skip terminals, pickers, etc.
-
-    local file = vim.api.nvim_buf_get_name(ev.buf)
-    if file == "" then return end
-
-    local root = vim.g.explorer_root:gsub("/$", "") .. "/"
-    if file:sub(1, #root) ~= root then
-      return
-    end
-
-    local picker = Snacks.picker.get({ source = "explorer" })[1]
-    if not picker then return end -- explorer isn't open, nothing to update
-
-    pcall(Snacks.explorer.reveal, { buf = ev.buf })
-  end,
-})
-
--- lua/configs/standalone.lua
--- (keep this below your get_root() function definition)
-vim.api.nvim_create_autocmd("VimEnter", {
-  once = true,
-  callback = function()
-    if vim.g.explorer_root then
-      return -- already set some other way, don't override
-    end
-    local arg = vim.fn.argv(0)
-    if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
-      -- nvim was opened directly on a directory: pin to it
-      vim.g.explorer_root = vim.fn.fnamemodify(arg, ":p"):gsub("/$", "")
-    else
-      vim.g.explorer_root = get_root()
-    end
-  end,
-})
-
-map("n", "<leader>e", function()
-  vim.g.explorer_root = vim.g.explorer_root or get_root()
-  Snacks.explorer({ cwd = vim.g.explorer_root })
-end, { desc = "Explorer (workspace root)" })
-
-map("n", "<leader>o", function()
-  local file = vim.api.nvim_buf_get_name(0)
-  local dir
-
-  if file ~= "" and vim.bo.buftype == "" then
-    -- a real file buffer is focused: use its directory
-    dir = vim.fn.fnamemodify(file, ":p:h")
-  else
-    -- no buffer (empty buffer, terminal, snacks list, etc.): fall back to root
-    dir = vim.g.explorer_root or get_root()
-  end
-
-  require("oil").toggle_float(dir)
-end, { desc = "Oil (file ops)" })
+map("n", "<leader>e", utils.toggle_explorer, { desc = "Explorer (workspace root)" })
+map("n", "<leader>o", utils.toggle_oil, { desc = "Oil (file ops)" })
 
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
@@ -133,13 +62,14 @@ map("n", "<leader>sw", function() Snacks.picker.lsp_workspace_symbols() end, { d
 -- ==========================================================
 -- Find (f group)
 -- ==========================================================
-map("n", "<leader><space>", function() Snacks.picker.smart({ cwd = vim.g.explorer_root or get_root(), hidden = true }) end,
+map("n", "<leader><space>",
+  function() Snacks.picker.smart({ cwd = vim.g.explorer_root or utils.get_root(), hidden = true }) end,
   { desc = "Smart find" })
-map("n", "<leader>ff", function() Snacks.picker.files({ cwd = vim.g.explorer_root or get_root(), hidden = true }) end,
+map("n", "<leader>ff", function() Snacks.picker.files({ cwd = vim.g.explorer_root or utils.get_root(), hidden = true }) end,
   { desc = "Find files" })
-map("n", "<leader>fg", function() Snacks.picker.grep({ cwd = vim.g.explorer_root or get_root(), hidden = true }) end,
+map("n", "<leader>fg", function() Snacks.picker.grep({ cwd = vim.g.explorer_root or utils.get_root(), hidden = true }) end,
   { desc = "Live grep" })
-map("n", "<leader>fw", function() Snacks.picker.grep_word({ cwd = vim.g.explorer_root or get_root(), hidden = true }) end,
+map("n", "<leader>fw", function() Snacks.picker.grep_word({ cwd = vim.g.explorer_root or utils.get_root(), hidden = true }) end,
   { desc = "Search word under cursor" })
 map("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent files" })
 map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
@@ -149,7 +79,7 @@ map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers
 -- ==========================================================
 -- lua/config/keymaps.lua
 vim.keymap.set("n", "<leader>gg", function()
-	Snacks.lazygit({ cwd = vim.g.explorer_root or require("config.utils").get_root() })
+  Snacks.lazygit({ cwd = vim.g.explorer_root or utils.get_root() })
 end, { desc = "Lazygit (workspace root)" })
 map("n", "<leader>gf", function() Snacks.picker.git_files() end, { desc = "Find git files" })
 

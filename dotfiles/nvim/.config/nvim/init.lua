@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-global
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -13,6 +11,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+require("configs.autocmds").setup()
 
 if vim.g.vscode then
 	require("configs.vscode")
