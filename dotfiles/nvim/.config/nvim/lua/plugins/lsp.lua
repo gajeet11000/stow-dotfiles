@@ -1,11 +1,47 @@
--- lua/plugins/lsp.lua
-
 return {
-  { "mason-org/mason.nvim" },
-  { "neovim/nvim-lspconfig" },
+  {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+
   {
     "mason-org/mason-lspconfig.nvim",
-    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
-    opts = { ensure_installed = { "lua_ls", } },
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+
+        "jdtls",
+
+        "basedpyright",
+        "ruff",
+
+        "ts_ls",
+        "eslint",
+        "html",
+        "cssls",
+        "emmet_language_server",
+
+        "jsonls",
+        "bashls",
+
+        "yamlls",
+
+        "dockerls",
+        "docker_compose_language_service",
+
+        "marksman",
+      }
+    },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local settings = require("servers")
+      for server, opts in pairs(settings) do
+        vim.lsp.config(server, { settings = { [server] = opts } })
+        vim.lsp.enable(server)
+      end
+    end,
   },
 }

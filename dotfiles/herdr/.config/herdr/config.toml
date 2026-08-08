@@ -1,0 +1,44 @@
+onboarding = false
+# herdr configuration
+
+[theme]
+# tmux: set -g @plugin 'catppuccin/tmux' (@catppuccin_flavor "mocha")
+name = "catppuccin"
+# Follow the host terminal's light/dark appearance.
+auto_switch = true
+dark_name = "catppuccin"          # mocha
+light_name = "catppuccin-latte"
+
+[keys]
+prefix = "ctrl+s"
+# tmux: bind % split-window -h  (side-by-side panes, vertical divider)
+split_vertical = "prefix+%"
+# tmux: bind '"' split-window -v  (stacked panes, horizontal divider)
+split_horizontal = 'prefix+"'
+# tmux: bind c new-window
+new_tab = "prefix+c"
+
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"

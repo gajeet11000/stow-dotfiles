@@ -1,10 +1,15 @@
 return {
-	"akinsho/bufferline.nvim",
-	cond = not vim.g.vscode,
-	opts = {
-		options = {
-			show_buffer_close_icons = true,
-			show_close_icon = false,
-		},
-	},
+  'akinsho/bufferline.nvim',
+  lazy = false,
+  opts = {
+    options = {
+      indicator = {
+        style = "underline",
+      },
+    },
+  },
+  keys = {
+    {"<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" }},
+    {"<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" }},
+  },
 }
